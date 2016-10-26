@@ -13,5 +13,7 @@ public class TextField extends JTextField {
         setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
         setFont(getFont().deriveFont(getFont().getSize() * 1.8f));
         setEditable(false);
+        setHorizontalAlignment(JTextField.CENTER);
+
     }
 }

@@ -77,6 +77,13 @@ public class OutputView extends JPanel {
         outHexField.setText(s);
     }
 
+    public void setAllFields(String s) {
+        setOutBinaryFieldText(s);
+        outOctalField.setText(s);
+        outDecimalField.setText(s);
+        outHexField.setText(s);
+    }
+
     public void update() {
         revalidate();
         repaint();

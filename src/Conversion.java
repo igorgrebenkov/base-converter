@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 import static java.lang.Long.toBinaryString;
 import static java.lang.Long.toHexString;
 import static java.lang.Long.toOctalString;
@@ -20,27 +22,29 @@ public class Conversion {
      * @param inputString the input number, minus the prefix
      * @return
      */
-    public static String convertNumber(char prefix, String inputString, OutputView outputView) {
+    public static void convertNumber(char prefix, String inputString, OutputView outputView) {
         String result = "";
-
-        switch (prefix) {
-            case '%':
-                convertBinary(inputString, outputView);
-                break;
-            case '@':
-                convertOctal(inputString, outputView);
-                break;
-            case '#':
-                convertDecimal(inputString, outputView);
-                break;
-            case '$':
-                convertHex(inputString, outputView);
-                break;
+        try {
+            switch (prefix) {
+                case '%':
+                    convertBinary(inputString, outputView);
+                    break;
+                case '@':
+                    convertOctal(inputString, outputView);
+                    break;
+                case '#':
+                    convertDecimal(inputString, outputView);
+                    break;
+                case '$':
+                    convertHex(inputString, outputView);
+                    break;
+            }
+        } catch (NumberFormatException e) {
+            outputView.setAllFields("invalid number");
         }
-        return result;
     }
 
-    private static void convertBinary(String inputString, OutputView outputView) {
+    private static void convertBinary(String inputString, OutputView outputView) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 2);
 
         outputView.setOutBinaryFieldText(inputString);
@@ -49,7 +53,7 @@ public class Conversion {
         outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
     }
 
-    private static void convertOctal(String inputString, OutputView outputView) {
+    private static void convertOctal(String inputString, OutputView outputView) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 8);
 
         outputView.setOutBinaryFieldText(toBinaryString(inputNum));
@@ -58,7 +62,7 @@ public class Conversion {
         outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
     }
 
-    private static void convertDecimal(String inputString, OutputView outputView) {
+    private static void convertDecimal(String inputString, OutputView outputView) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 10);
 
         outputView.setOutBinaryFieldText(toBinaryString(inputNum));
@@ -67,7 +71,7 @@ public class Conversion {
         outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
     }
 
-    private static void convertHex(String inputString, OutputView outputView) {
+    private static void convertHex(String inputString, OutputView outputView) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 16);
 
         outputView.setOutBinaryFieldText(toBinaryString(inputNum));

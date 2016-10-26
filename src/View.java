@@ -33,7 +33,7 @@ public class View extends JFrame {
 
         JPanel inputLabelPanel = new JPanel();
         inputLabelPanel.setBackground(Color.darkGray);
-        JLabel inputLabel = new JLabel("Input");
+        JLabel inputLabel = new JLabel("           Input");
         inputLabel.setFont(inputLabel.getFont().deriveFont(inputLabel.getFont().getSize() * 1.8f));
         inputLabel.setForeground(Color.WHITE);
         inputLabelPanel.add(inputLabel);
@@ -42,7 +42,7 @@ public class View extends JFrame {
 
         JPanel outputLabelPanel = new JPanel();
         outputLabelPanel.setBackground(Color.darkGray);
-        JLabel outputLabel = new JLabel("Output");
+        JLabel outputLabel = new JLabel("          Output");
         outputLabel.setFont(outputLabel.getFont().deriveFont(outputLabel.getFont().getSize() * 1.8f));
         outputLabel.setForeground(Color.WHITE);
         outputLabelPanel.add(outputLabel);
