@@ -12,7 +12,6 @@ public class InputView extends JPanel {
     private Model model;        // the model
     private JLabel inputLabel;  // Label for the input field
     private JTextField inputField = new JTextField();  // the field for user input
-    private final static int MAX_FIELD_WIDTH = 400;
 
     public InputView(Model model, Controller controller) {
         this.model = model;
@@ -21,11 +20,11 @@ public class InputView extends JPanel {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        inputField = new JTextField();
-        inputField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH,30));
-        inputField.setFont(inputField.getFont().deriveFont(inputField.getFont().getSize() * 1.8f));
+        inputField = new TextField();
+        inputField.setEditable(true);
+        inputField.getDocument().addDocumentListener(controller);
 
-        JLabel spacer = new JLabel("              ");
+        JLabel spacer = new JLabel("              "); // Maintains spacing with output textfields
         spacer.setFont(spacer.getFont().deriveFont(spacer.getFont().getSize() * 1.4f));
         spacer.setLabelFor(inputField);
 
@@ -34,6 +33,10 @@ public class InputView extends JPanel {
         add(spacer);
         c.gridwidth = GridBagConstraints.REMAINDER;
         add(inputField, c);
+    }
+
+    public JTextField getInputField() {
+        return inputField;
     }
 
     public void update() {

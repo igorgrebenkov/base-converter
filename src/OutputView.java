@@ -19,7 +19,6 @@ public class OutputView extends JPanel {
     private JLabel outDecimalLabel;
     private JLabel outHexLabel;
 
-    private final static int MAX_FIELD_WIDTH = 400;
 
 
     public OutputView(Model model, Controller controller) {
@@ -31,46 +30,19 @@ public class OutputView extends JPanel {
 
         outputLabel = new JLabel("Output");
         outputLabel.setFont(outputLabel.getFont().deriveFont(outputLabel.getFont().getSize() * 1.8F));
-        outputLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         outputLabel.setForeground(Color.WHITE);
-        outputLabel.setAlignmentX( Component.CENTER_ALIGNMENT );
-        outputLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        outBinaryField = new JTextField();
-        outBinaryField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
-        outBinaryField.setFont(outBinaryField.getFont().deriveFont(outBinaryField.getFont().getSize() * 1.8f));
-        outBinaryField.setEditable(false);
-        JLabel outBinaryLabel = new JLabel("Binary  ");
-        outBinaryLabel.setLabelFor(outBinaryField);
-        outBinaryLabel.setFont(outBinaryLabel.getFont().deriveFont(outBinaryLabel.getFont().getSize() * 1.4f));
-        outBinaryLabel.setForeground(Color.WHITE);
+        outBinaryField = new TextField();
+        JLabel outBinaryLabel = new OutputFieldLabel("Binary  ");
 
-        outOctalField = new JTextField();
-        outOctalField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
-        outOctalField.setFont(outOctalField.getFont().deriveFont(outOctalField.getFont().getSize() * 1.8f));
-        outOctalField.setEditable(false);
-        JLabel outOctalLabel = new JLabel("Octal  ");
-        outOctalLabel.setLabelFor(outOctalField);
-        outOctalLabel.setFont(outOctalLabel.getFont().deriveFont(outOctalLabel.getFont().getSize() * 1.4f));
-        outOctalLabel.setForeground(Color.WHITE);
+        outOctalField = new TextField();
+        JLabel outOctalLabel = new OutputFieldLabel("Octal  ");
 
-        outDecimalField = new JTextField();
-        outDecimalField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
-        outDecimalField.setFont(outDecimalField.getFont().deriveFont(outDecimalField.getFont().getSize() * 1.8f));
-        outDecimalField.setEditable(false);
-        JLabel outDecimalLabel = new JLabel("Decimal  ");
-        outDecimalLabel.setLabelFor(outDecimalField);
-        outDecimalLabel.setFont(outDecimalLabel.getFont().deriveFont(outDecimalLabel.getFont().getSize() * 1.4f));
-        outDecimalLabel.setForeground(Color.WHITE);
+        outDecimalField = new TextField();
+        JLabel outDecimalLabel = new OutputFieldLabel("Decimal  ");
 
-        outHexField = new JTextField();
-        outHexField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
-        outHexField.setFont(outHexField.getFont().deriveFont(outHexField.getFont().getSize() * 1.8f));
-        outHexField.setEditable(false);
-        JLabel outHexLabel = new JLabel("Hex  ");
-        outHexLabel.setLabelFor(outHexField);
-        outHexLabel.setFont(outHexLabel.getFont().deriveFont(outHexLabel.getFont().getSize() * 1.4f));
-        outHexLabel.setForeground(Color.WHITE);
+        outHexField = new TextField();
+        JLabel outHexLabel = new OutputFieldLabel("Hex  ");
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
@@ -87,6 +59,22 @@ public class OutputView extends JPanel {
 
         add(outHexLabel);
         add(outHexField, c);
+    }
+
+    public void setOutBinaryFieldText(String s) {
+        outBinaryField.setText(s);
+    }
+
+    public void setOutOctalFieldText(String s) {
+        outOctalField.setText(s);
+    }
+
+    public void setOutDecimalFieldText(String s) {
+        outDecimalField.setText(s);
+    }
+
+    public void setOutHexFieldText(String s) {
+        outHexField.setText(s);
     }
 
     public void update() {
