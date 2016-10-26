@@ -26,10 +26,8 @@ public class OutputView extends JPanel {
         this.model = model;
         setBackground(Color.darkGray);
         setFocusable(true);
-        //setPreferredSize(new Dimension(600, 150));
-        setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
-
-
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
 
         outputLabel = new JLabel("Output");
         outputLabel.setFont(outputLabel.getFont().deriveFont(outputLabel.getFont().getSize() * 1.8F));
@@ -37,47 +35,58 @@ public class OutputView extends JPanel {
         outputLabel.setForeground(Color.WHITE);
         outputLabel.setAlignmentX( Component.CENTER_ALIGNMENT );
         outputLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
-        JLabel outBinaryLabel = new JLabel("Binary:");
-        outBinaryLabel.setLabelFor(outputLabel);
 
-
-                outBinaryField = new JTextField();
-        //outBinaryField.setPreferredSize(new Dimension(400, 30));
+        outBinaryField = new JTextField();
         outBinaryField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
-        outBinaryField.setAlignmentX(Component.CENTER_ALIGNMENT);
         outBinaryField.setFont(outBinaryField.getFont().deriveFont(outBinaryField.getFont().getSize() * 1.8f));
-
+        outBinaryField.setEditable(false);
+        JLabel outBinaryLabel = new JLabel("Binary  ");
+        outBinaryLabel.setLabelFor(outBinaryField);
+        outBinaryLabel.setFont(outBinaryLabel.getFont().deriveFont(outBinaryLabel.getFont().getSize() * 1.4f));
+        outBinaryLabel.setForeground(Color.WHITE);
 
         outOctalField = new JTextField();
-        //outOctalField.setPreferredSize(new Dimension(400, 30));
         outOctalField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
-        outOctalField.setAlignmentX(Component.CENTER_ALIGNMENT);
         outOctalField.setFont(outOctalField.getFont().deriveFont(outOctalField.getFont().getSize() * 1.8f));
+        outOctalField.setEditable(false);
+        JLabel outOctalLabel = new JLabel("Octal  ");
+        outOctalLabel.setLabelFor(outOctalField);
+        outOctalLabel.setFont(outOctalLabel.getFont().deriveFont(outOctalLabel.getFont().getSize() * 1.4f));
+        outOctalLabel.setForeground(Color.WHITE);
 
         outDecimalField = new JTextField();
-        //outDecimalField.setPreferredSize(new Dimension(400, 30));
         outDecimalField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
-        outDecimalField.setAlignmentX(Component.CENTER_ALIGNMENT);
         outDecimalField.setFont(outDecimalField.getFont().deriveFont(outDecimalField.getFont().getSize() * 1.8f));
+        outDecimalField.setEditable(false);
+        JLabel outDecimalLabel = new JLabel("Decimal  ");
+        outDecimalLabel.setLabelFor(outDecimalField);
+        outDecimalLabel.setFont(outDecimalLabel.getFont().deriveFont(outDecimalLabel.getFont().getSize() * 1.4f));
+        outDecimalLabel.setForeground(Color.WHITE);
 
         outHexField = new JTextField();
-        //outHexField.setPreferredSize(new Dimension(400, 30));
         outHexField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
-        outHexField.setAlignmentX(Component.CENTER_ALIGNMENT);
         outHexField.setFont(outHexField.getFont().deriveFont(outHexField.getFont().getSize() * 1.8f));
+        outHexField.setEditable(false);
+        JLabel outHexLabel = new JLabel("Hex  ");
+        outHexLabel.setLabelFor(outHexField);
+        outHexLabel.setFont(outHexLabel.getFont().deriveFont(outHexLabel.getFont().getSize() * 1.4f));
+        outHexLabel.setForeground(Color.WHITE);
 
-        add(Box.createRigidArea(new Dimension(0, 10)));
-        add(outputLabel);
-        add(Box.createRigidArea(new Dimension(0, 20)));
-        add(outBinaryField);
-        add(Box.createRigidArea(new Dimension(0, 20)));
-        add(outOctalField);
-        add(Box.createRigidArea(new Dimension(0, 20)));
-        add(outDecimalField);
-        add(Box.createRigidArea(new Dimension(0, 20)));
-        add(outHexField);
-        add(Box.createRigidArea(new Dimension(0,10)));
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 1;
 
+        add(outBinaryLabel);
+        c.gridwidth = GridBagConstraints.REMAINDER;
+        add(outBinaryField, c);
+
+        add(outOctalLabel);
+        add(outOctalField, c);
+
+        add(outDecimalLabel);
+        add(outDecimalField, c);
+
+        add(outHexLabel);
+        add(outHexField, c);
     }
 
     public void update() {

@@ -18,24 +18,22 @@ public class InputView extends JPanel {
         this.model = model;
         setBackground(Color.darkGray);
         setFocusable(true);
-        setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
-
-        inputLabel = new JLabel("Input");
-        inputLabel.setFont(inputLabel.getFont().deriveFont(inputLabel.getFont().getSize() * 1.8f));
-        inputLabel.setForeground(Color.WHITE);
-        inputLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        inputLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
 
         inputField = new JTextField();
-        inputField.setPreferredSize(new Dimension(400,30));
         inputField.setMaximumSize(new Dimension(MAX_FIELD_WIDTH,30));
-        inputField.setAlignmentX( Component.CENTER_ALIGNMENT );
         inputField.setFont(inputField.getFont().deriveFont(inputField.getFont().getSize() * 1.8f));
 
-        add(Box.createRigidArea(new Dimension(0,10)));
-        add(inputLabel);
-        add(Box.createRigidArea(new Dimension(0,10)));
-        add(inputField);
+        JLabel spacer = new JLabel("              ");
+        spacer.setFont(spacer.getFont().deriveFont(spacer.getFont().getSize() * 1.4f));
+        spacer.setLabelFor(inputField);
+
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 1;
+        add(spacer);
+        c.gridwidth = GridBagConstraints.REMAINDER;
+        add(inputField, c);
     }
 
     public void update() {
