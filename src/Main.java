@@ -1,5 +1,10 @@
 /**
- * Created by Igor on 10/25/2016.
+ * The class <b>Main</b> contains the main method of the program.
+ *
+ * @author Igor Grebenkov
  */
 public class Main {
+    public static void main(String[] args) {
+
+    }
 }
