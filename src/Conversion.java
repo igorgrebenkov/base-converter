@@ -25,39 +25,54 @@ public class Conversion {
 
         switch (prefix) {
             case '%':
-                // do binary conversions
+                convertBinary(inputString, outputView);
                 break;
             case '@':
-                // do octal conversions
+                convertOctal(inputString, outputView);
                 break;
             case '#':
-                result = convertDecimal(inputString, outputView);
-                // do decimal conversions
+                convertDecimal(inputString, outputView);
                 break;
             case '$':
-                // do hex conversions
+                convertHex(inputString, outputView);
                 break;
         }
         return result;
     }
 
-    private static void convertDecimal(String inputString, OutputView outputView) {
-        Long inputNum = Long.parseLong(inputString);
+    private static void convertBinary(String inputString, OutputView outputView) {
+        Long inputNum = Long.parseLong(inputString, 2);
 
-        outputView.setOutBinaryFieldText(toBinaryString(inputNum));
-
+        outputView.setOutBinaryFieldText(inputString);
         outputView.setOutOctalFieldText(toOctalString(inputNum));
-
-        outputView.setOutDecimalFieldText(inputString);
-
+        outputView.setOutDecimalFieldText(inputNum.toString());
         outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
     }
 
-    private static void convertBinary(String inputString, OutputView outputView) {
-        
+    private static void convertOctal(String inputString, OutputView outputView) {
+        Long inputNum = Long.parseLong(inputString, 8);
+
+        outputView.setOutBinaryFieldText(toBinaryString(inputNum));
+        outputView.setOutOctalFieldText(inputString);
+        outputView.setOutDecimalFieldText(inputNum.toString());
+        outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
     }
 
-    public static String convertDecimalToBinary(String inputNum) {
-        return "";
+    private static void convertDecimal(String inputString, OutputView outputView) {
+        Long inputNum = Long.parseLong(inputString, 10);
+
+        outputView.setOutBinaryFieldText(toBinaryString(inputNum));
+        outputView.setOutOctalFieldText(toOctalString(inputNum));
+        outputView.setOutDecimalFieldText(inputNum.toString());
+        outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
+    }
+
+    private static void convertHex(String inputString, OutputView outputView) {
+        Long inputNum = Long.parseLong(inputString, 16);
+
+        outputView.setOutBinaryFieldText(toBinaryString(inputNum));
+        outputView.setOutOctalFieldText(toOctalString(inputNum));
+        outputView.setOutDecimalFieldText(inputNum.toString());
+        outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
     }
 }

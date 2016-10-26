@@ -5,7 +5,6 @@ import javax.swing.text.Document;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 /**
  * The class <b>Controller</b> handles all events and communicates changes between the model and view.
  * <p>
@@ -30,7 +29,7 @@ public class Controller implements ActionListener, DocumentListener {
         Document source = de.getDocument();
         String input  = "";
         try {
-            input += source.getText(0, source.getLength());
+            input += source.getText(0, source. getLength());
         } catch (BadLocationException e) {
             System.out.println("BadLocationException: " + e.getMessage());
         }
