@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 /**
  * The class <b>View</b> contains the main View of the program.
@@ -33,7 +31,7 @@ public class View extends JFrame {
 
         JPanel inputLabelPanel = new JPanel();
         inputLabelPanel.setBackground(Color.darkGray);
-        JLabel inputLabel = new JLabel("           Input");
+        JLabel inputLabel = new JLabel("           Input");  // super hacky spacing
         inputLabel.setFont(inputLabel.getFont().deriveFont(inputLabel.getFont().getSize() * 1.8f));
         inputLabel.setForeground(Color.WHITE);
         inputLabelPanel.add(inputLabel);
@@ -42,7 +40,7 @@ public class View extends JFrame {
 
         JPanel outputLabelPanel = new JPanel();
         outputLabelPanel.setBackground(Color.darkGray);
-        JLabel outputLabel = new JLabel("          Output");
+        JLabel outputLabel = new JLabel("          Output");  // super hacky spacing
         outputLabel.setFont(outputLabel.getFont().deriveFont(outputLabel.getFont().getSize() * 1.8f));
         outputLabel.setForeground(Color.WHITE);
         outputLabelPanel.add(outputLabel);

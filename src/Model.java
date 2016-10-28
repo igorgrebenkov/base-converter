@@ -1,5 +1,3 @@
-import java.util.Stack;
-
 /**
  * The class Model contains the state of the program.
  *

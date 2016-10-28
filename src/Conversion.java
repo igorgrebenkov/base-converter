@@ -1,4 +1,4 @@
-import java.text.NumberFormat;
+import java.math.BigInteger;
 
 import static java.lang.Long.toBinaryString;
 import static java.lang.Long.toHexString;
@@ -6,9 +6,9 @@ import static java.lang.Long.toOctalString;
 
 /**
  * The class Conversion contains helper functions for converting numbers between bases.
- *
+ * <p>
  * After a conversion, it updates the appropriate text fields.
- *
+ * <p>
  * It contains only static methods.
  *
  * @author Igor Grebenkov
@@ -18,65 +18,63 @@ public class Conversion {
     /**
      * Calls the appropriate methods to make the requested conversion.
      *
-     * @param prefix the first character in the string; indicates the base of the input
+     * @param prefix      the first character in the string; indicates the base of the input
      * @param inputString the input number, minus the prefix
-     * @return
      */
-    public static void convertNumber(char prefix, String inputString, OutputView outputView) {
+    public static void convertNumber(char prefix, String inputString, Model model) throws NumberFormatException {
         String result = "";
-        try {
-            switch (prefix) {
-                case '%':
-                    convertBinary(inputString, outputView);
-                    break;
-                case '@':
-                    convertOctal(inputString, outputView);
-                    break;
-                case '#':
-                    convertDecimal(inputString, outputView);
-                    break;
-                case '$':
-                    convertHex(inputString, outputView);
-                    break;
-            }
-        } catch (NumberFormatException e) {
-            outputView.setAllFields("invalid number");
+        switch (prefix) {
+            case '%':
+                convertBinary(inputString, model);
+                break;
+            case '@':
+                convertOctal(inputString, model);
+                break;
+            case '#':
+                convertDecimal(inputString, model);
+                break;
+            case '$':
+                convertHex(inputString, model);
+                break;
         }
+
     }
 
-    private static void convertBinary(String inputString, OutputView outputView) throws NumberFormatException {
+    private static void convertBinary(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 2);
 
-        outputView.setOutBinaryFieldText(inputString);
-        outputView.setOutOctalFieldText(toOctalString(inputNum));
-        outputView.setOutDecimalFieldText(inputNum.toString());
-        outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
+        model.setOutBinary(inputString);
+        model.setOutOctal(toOctalString(inputNum));
+        model.setOutDecimal(inputNum.toString());
+        model.setOutHex(toHexString(inputNum).toUpperCase());
     }
 
-    private static void convertOctal(String inputString, OutputView outputView) throws NumberFormatException {
+    private static void convertOctal(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 8);
 
-        outputView.setOutBinaryFieldText(toBinaryString(inputNum));
-        outputView.setOutOctalFieldText(inputString);
-        outputView.setOutDecimalFieldText(inputNum.toString());
-        outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
+        model.setOutBinary(toBinaryString(inputNum));
+        model.setOutOctal(inputString);
+        model.setOutDecimal(inputNum.toString());
+        model.setOutHex(toHexString(inputNum).toUpperCase());
     }
 
-    private static void convertDecimal(String inputString, OutputView outputView) throws NumberFormatException {
+    private static void convertDecimal(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 10);
 
-        outputView.setOutBinaryFieldText(toBinaryString(inputNum));
-        outputView.setOutOctalFieldText(toOctalString(inputNum));
-        outputView.setOutDecimalFieldText(inputNum.toString());
-        outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
+        model.setOutBinary(toBinaryString(inputNum));
+        model.setOutOctal(toOctalString(inputNum));
+        model.setOutDecimal(inputNum.toString());
+        model.setOutHex(toHexString(inputNum).toUpperCase());
     }
 
-    private static void convertHex(String inputString, OutputView outputView) throws NumberFormatException {
+    private static void convertHex(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 16);
 
-        outputView.setOutBinaryFieldText(toBinaryString(inputNum));
-        outputView.setOutOctalFieldText(toOctalString(inputNum));
-        outputView.setOutDecimalFieldText(inputNum.toString());
-        outputView.setOutHexFieldText(toHexString(inputNum).toUpperCase());
+        model.setOutBinary(toBinaryString(inputNum));
+        model.setOutOctal(toOctalString(inputNum));
+        model.setOutDecimal(inputNum.toString());
+        model.setOutHex(toHexString(inputNum).toUpperCase());
     }
+
+
 }

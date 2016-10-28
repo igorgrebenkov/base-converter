@@ -15,11 +15,6 @@ public class OutputView extends JPanel {
     private JTextField outOctalField;   // the octal output field
     private JTextField outDecimalField; // the decimal output field
     private JTextField outHexField;     // the hex output field
-    private JLabel outOctalLabel;
-    private JLabel outDecimalLabel;
-    private JLabel outHexLabel;
-
-
 
     public OutputView(Model model, Controller controller) {
         this.model = model;
@@ -78,13 +73,17 @@ public class OutputView extends JPanel {
     }
 
     public void setAllFields(String s) {
-        setOutBinaryFieldText(s);
+        outBinaryField.setText(s);
         outOctalField.setText(s);
         outDecimalField.setText(s);
         outHexField.setText(s);
     }
 
     public void update() {
+        setOutBinaryFieldText(model.getOutBinary());
+        outOctalField.setText(model.getOutOctal());
+        outDecimalField.setText(model.getOutDecimal());
+        outHexField.setText(model.getOutHex());
         revalidate();
         repaint();
     }

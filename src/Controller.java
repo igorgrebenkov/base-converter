@@ -56,9 +56,13 @@ public class Controller implements ActionListener, DocumentListener {
                     input.charAt(0) == '@' ||
                     input.charAt(0) == '#' ||
                     input.charAt(0) == '$') {
-                char basePrefix = input.charAt(0);
-                Conversion.convertNumber(basePrefix, input.substring(1), view.getOutputView());
-                view.update();
+                try {
+                    char basePrefix = input.charAt(0);
+                    Conversion.convertNumber(basePrefix, input.substring(1), model);
+                    view.update();
+                } catch (NumberFormatException e) {
+                    view.getOutputView().setAllFields("invalid number");
+                }
             }
         }
     }
