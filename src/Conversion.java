@@ -46,34 +46,34 @@ public class Conversion {
         model.setOutBinary(formatBinaryString(inputString));
         model.setOutOctal(toOctalString(inputNum));
         model.setOutDecimal(inputNum.toString());
-        model.setOutHex(toHexString(inputNum).toUpperCase());
+        model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
     private static void convertOctal(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 8);
 
-        model.setOutBinary(toBinaryString(inputNum));
+        model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
         model.setOutOctal(inputString);
         model.setOutDecimal(inputNum.toString());
-        model.setOutHex(toHexString(inputNum).toUpperCase());
+        model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
     private static void convertDecimal(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 10);
 
-        model.setOutBinary(toBinaryString(inputNum));
+        model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
         model.setOutOctal(toOctalString(inputNum));
         model.setOutDecimal(inputNum.toString());
-        model.setOutHex(toHexString(inputNum).toUpperCase());
+        model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
     private static void convertHex(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 16);
 
-        model.setOutBinary(toBinaryString(inputNum));
+        model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
         model.setOutOctal(toOctalString(inputNum));
         model.setOutDecimal(inputNum.toString());
-        model.setOutHex(toHexString(inputNum).toUpperCase());
+        model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
     private static String formatBinaryString(String binary) {
@@ -98,6 +98,25 @@ public class Conversion {
         for (int i = 0; i < binary.length(); ++i) {
             char c = binary.charAt(i);
             if (i % 4 == 0 && i != 0) {
+                result += " ";
+            }
+            result += c;
+        }
+        return result;
+    }
+
+    private static String formatHexString(String hex) {
+        // Pad with zeros if necessary
+        if (hex.length() > 2 && hex.length() % 2 == 1) {
+            hex = "0" + hex;
+        }
+
+        String result = "";
+
+        // Add spaces to group into twos
+        for (int i = 0; i < hex.length(); ++i) {
+            char c = hex.charAt(i);
+            if (i % 2 == 0 && i != 0) {
                 result += " ";
             }
             result += c;
