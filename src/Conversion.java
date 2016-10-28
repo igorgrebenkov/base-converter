@@ -43,7 +43,7 @@ public class Conversion {
     private static void convertBinary(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 2);
 
-        model.setOutBinary(inputString);
+        model.setOutBinary(formatBinaryString(inputString));
         model.setOutOctal(toOctalString(inputNum));
         model.setOutDecimal(inputNum.toString());
         model.setOutHex(toHexString(inputNum).toUpperCase());
@@ -76,5 +76,32 @@ public class Conversion {
         model.setOutHex(toHexString(inputNum).toUpperCase());
     }
 
+    private static String formatBinaryString(String binary) {
+        // Pad with zeros if necessary
+        if (binary.length() > 3) {
+            switch (binary.length() % 4) {
+                case 1:
+                    binary = "000" + binary;
+                    break;
+                case 2:
+                    binary = "00" + binary;
+                    break;
+                case 3:
+                    binary = "0" + binary;
+                    break;
+            }
+        }
 
+        String result = "";
+
+        // Add spaces to group into fours
+        for (int i = 0; i < binary.length(); ++i) {
+            char c = binary.charAt(i);
+            if (i % 4 == 0 && i != 0) {
+                result += " ";
+            }
+            result += c;
+        }
+        return result;
+    }
 }
