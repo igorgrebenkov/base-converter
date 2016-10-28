@@ -44,8 +44,8 @@ public class Conversion {
         Long inputNum = Long.parseLong(inputString, 2);
 
         model.setOutBinary(formatBinaryString(inputString));
-        model.setOutOctal(toOctalString(inputNum));
-        model.setOutDecimal(inputNum.toString());
+        model.setOutOctal(formatOctalString(toOctalString(inputNum)));
+        model.setOutDecimal(formatDecimalString(inputNum.toString()));
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
@@ -53,8 +53,8 @@ public class Conversion {
         Long inputNum = Long.parseLong(inputString, 8);
 
         model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
-        model.setOutOctal(inputString);
-        model.setOutDecimal(inputNum.toString());
+        model.setOutOctal(formatOctalString(inputString));
+        model.setOutDecimal(formatDecimalString(inputNum.toString()));
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
@@ -62,8 +62,8 @@ public class Conversion {
         Long inputNum = Long.parseLong(inputString, 10);
 
         model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
-        model.setOutOctal(toOctalString(inputNum));
-        model.setOutDecimal(inputNum.toString());
+        model.setOutOctal(formatOctalString(toOctalString(inputNum)));
+        model.setOutDecimal(formatDecimalString(inputNum.toString()));
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
@@ -71,8 +71,8 @@ public class Conversion {
         Long inputNum = Long.parseLong(inputString, 16);
 
         model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
-        model.setOutOctal(toOctalString(inputNum));
-        model.setOutDecimal(inputNum.toString());
+        model.setOutOctal(formatOctalString(toOctalString(inputNum)));
+        model.setOutDecimal(formatDecimalString(inputNum.toString()));
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
@@ -91,9 +91,7 @@ public class Conversion {
                     break;
             }
         }
-
         String result = "";
-
         // Add spaces to group into fours
         for (int i = 0; i < binary.length(); ++i) {
             char c = binary.charAt(i);
@@ -105,14 +103,55 @@ public class Conversion {
         return result;
     }
 
+    private static String formatOctalString(String octal) {
+        // Pad with zeros if necessary
+        if (octal.length() > 3) {
+            switch (octal.length() % 3) {
+                case 1:
+                    octal = "00" + octal;
+                    break;
+                case 2:
+                    octal = "0" + octal;
+                    break;
+            }
+        }
+        String result = "";
+        // Add spaces to group into threes
+        for (int i = 0; i < octal.length(); ++i) {
+            char c = octal.charAt(i);
+            if (i % 3 == 0 && i != 0) {
+                result += " ";
+            }
+            result += c;
+        }
+        return result;
+    }
+
+    private static String formatDecimalString(String decimal) {
+        if (decimal.length() > 3) {
+            String firstDigit = decimal.substring(0, 1) + " ";
+            String remainder = decimal.substring(1);
+            String remainderSpaced = "";
+
+            // Add spaces to group into threes
+            for (int i = 0; i < remainder.length(); ++i) {
+                char c = remainder.charAt(i);
+                if (i != 0 && i % 3 == 0) {
+                    remainderSpaced += " ";
+                }
+                remainderSpaced += c;
+            }
+            return firstDigit + remainderSpaced;
+        }
+        return decimal;
+    }
+
     private static String formatHexString(String hex) {
         // Pad with zeros if necessary
         if (hex.length() > 2 && hex.length() % 2 == 1) {
             hex = "0" + hex;
         }
-
         String result = "";
-
         // Add spaces to group into twos
         for (int i = 0; i < hex.length(); ++i) {
             char c = hex.charAt(i);
