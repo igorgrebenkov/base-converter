@@ -129,11 +129,26 @@ public class Conversion {
 
     private static String formatDecimalString(String decimal) {
         if (decimal.length() > 3) {
-            String firstDigit = decimal.substring(0, 1) + " ";
-            String remainder = decimal.substring(1);
+            String firstDigit = "";
+            String remainder = "";
+            switch (decimal.length() % 3) {
+                case 1:
+                    firstDigit = decimal.substring(0, 1) + " ";
+                    remainder = decimal.substring(1);
+                    break;
+                case 2:
+                    firstDigit = decimal.substring(0, 2) + " ";
+                    remainder = decimal.substring(2);
+                    break;
+                case 0:
+                    firstDigit = decimal.substring(0, 3) + " ";
+                    remainder = decimal.substring(3);
+                    break;
+
+            }
             String remainderSpaced = "";
 
-            // Add spaces to group into threes
+            // Add spaces to rest of string to group into threes
             for (int i = 0; i < remainder.length(); ++i) {
                 char c = remainder.charAt(i);
                 if (i != 0 && i % 3 == 0) {
