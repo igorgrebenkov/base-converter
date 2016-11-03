@@ -85,6 +85,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
         } else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_C) {  // clear input field
             model.setInput("");
             view.getInputView().getInputField().setText("");
+            view.getOutputView().setAllFields("");
 
         }
     }
