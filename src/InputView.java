@@ -9,11 +9,11 @@ import java.awt.*;
  * @author Igor Grebenkov
  */
 public class InputView extends JPanel {
-    private Model model;        // the model
-    private JLabel inputLabel;  // Label for the input field
+    private Model model;
     private JTextField inputField = new JTextField();  // the field for user input
 
     public InputView(Model model, Controller controller) {
+
         this.model = model;
         setBackground(Color.darkGray);
         setFocusable(true);
@@ -26,7 +26,7 @@ public class InputView extends JPanel {
         inputField.getDocument().addDocumentListener(controller);
         inputField.addKeyListener(controller);
 
-        JLabel spacer = new JLabel("            "); // Maintains spacing with output textfields
+        JLabel spacer = new JLabel("            "); // Maintains spacing with output TextFields
         spacer.setFont(spacer.getFont().deriveFont(spacer.getFont().getSize() * 1.4f));
         spacer.setLabelFor(inputField);
 
@@ -42,6 +42,7 @@ public class InputView extends JPanel {
     }
 
     public void update() {
+        model.setInput(inputField.getText());
         revalidate();
         repaint();
     }
