@@ -13,7 +13,6 @@ public class InputView extends JPanel {
     private JTextField inputField = new JTextField();  // the field for user input
 
     public InputView(Model model, Controller controller) {
-
         this.model = model;
         setBackground(Color.darkGray);
         setFocusable(true);

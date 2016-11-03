@@ -75,6 +75,10 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
             StringSelection stringSelection = new StringSelection(model.getOutHex());
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(stringSelection, null);
+        } else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_I) {  // copy current input to clipboard
+            StringSelection stringSelection = new StringSelection(model.getInput().substring(1).trim());
+            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            clipboard.setContents(stringSelection, null);
         }
     }
 
