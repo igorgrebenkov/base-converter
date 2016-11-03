@@ -14,5 +14,6 @@ public class TextField extends JTextField {
         setFont(getFont().deriveFont(getFont().getSize() * 1.8f));
         setEditable(false);
         setHorizontalAlignment(JTextField.CENTER);
+        setFocusable(false);
     }
 }

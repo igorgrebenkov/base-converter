@@ -22,7 +22,6 @@ public class Conversion {
      * @param inputString the input number, minus the prefix
      */
     public static void convertNumber(char prefix, String inputString, Model model) throws NumberFormatException {
-        String result = "";
         switch (prefix) {
             case '%':
                 convertBinary(inputString, model);
@@ -37,7 +36,6 @@ public class Conversion {
                 convertHex(inputString, model);
                 break;
         }
-
     }
 
     private static void convertBinary(String inputString, Model model) throws NumberFormatException {

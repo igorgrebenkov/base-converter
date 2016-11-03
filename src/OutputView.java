@@ -56,22 +56,6 @@ public class OutputView extends JPanel {
         add(outHexField, c);
     }
 
-    public void setOutBinaryFieldText(String s) {
-        outBinaryField.setText(s);
-    }
-
-    public void setOutOctalFieldText(String s) {
-        outOctalField.setText(s);
-    }
-
-    public void setOutDecimalFieldText(String s) {
-        outDecimalField.setText(s);
-    }
-
-    public void setOutHexFieldText(String s) {
-        outHexField.setText(s);
-    }
-
     public void setAllFields(String s) {
         outBinaryField.setText(s);
         outOctalField.setText(s);
@@ -80,7 +64,7 @@ public class OutputView extends JPanel {
     }
 
     public void update() {
-        setOutBinaryFieldText(model.getOutBinary());
+        outBinaryField.setText(model.getOutBinary());
         outOctalField.setText(model.getOutOctal());
         outDecimalField.setText(model.getOutDecimal());
         outHexField.setText(model.getOutHex());

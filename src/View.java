@@ -31,7 +31,7 @@ public class View extends JFrame {
 
         JPanel inputLabelPanel = new JPanel();
         inputLabelPanel.setBackground(Color.darkGray);
-        JLabel inputLabel = new JLabel("           Input");  // super hacky spacing
+        JLabel inputLabel = new JLabel("          Input");  // super hacky spacing
         inputLabel.setFont(inputLabel.getFont().deriveFont(inputLabel.getFont().getSize() * 1.8f));
         inputLabel.setForeground(Color.WHITE);
         inputLabelPanel.add(inputLabel);
@@ -54,6 +54,7 @@ public class View extends JFrame {
         mainPanel.add(outputView, BorderLayout.PAGE_END);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         add(mainPanel);
+        inputView.getInputField().requestFocus();
 
         pack();
     }
