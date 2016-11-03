@@ -163,6 +163,13 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
                     view.getOutputView().setAllFields("invalid number");
                 }
             }
+        } else {
+            model.setOutBinary("");
+            model.setOutOctal("");
+            model.setOutDecimal("");
+            model.setOutHex("");
+            view.update();
+
         }
     }
 }
