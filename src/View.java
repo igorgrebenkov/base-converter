@@ -65,6 +65,15 @@ public class View extends JFrame {
     }
 
     /**
+     * Getter for the InputView.
+     *
+     * @return the OutputView
+     */
+    public InputView getInputView() {
+        return inputView;
+    }
+
+    /**
      * Getter for the OutputView.
      *
      * @return the OutputView
