@@ -24,6 +24,7 @@ public class InputView extends JPanel {
         inputField.setEditable(true);
         inputField.setFocusable(true);
         inputField.getDocument().addDocumentListener(controller);
+        inputField.addKeyListener(controller);
 
         JLabel spacer = new JLabel("            "); // Maintains spacing with output textfields
         spacer.setFont(spacer.getFont().deriveFont(spacer.getFont().getSize() * 1.4f));

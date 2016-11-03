@@ -25,6 +25,7 @@ public class View extends JFrame {
         setFocusable(false);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
+
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
         mainPanel.setBackground(Color.darkGray);
@@ -55,7 +56,6 @@ public class View extends JFrame {
         mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         add(mainPanel);
         inputView.getInputField().requestFocus();
-
         pack();
     }
 

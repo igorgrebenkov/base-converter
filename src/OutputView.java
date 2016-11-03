@@ -9,8 +9,7 @@ import java.awt.*;
  * @author Igor Grebenkov
  */
 public class OutputView extends JPanel {
-    private Model model;                // the model
-    private JLabel outputLabel;         // the label for the output fields
+    private Model model;
     private JTextField outBinaryField;  // the binary output field
     private JTextField outOctalField;   // the octal output field
     private JTextField outDecimalField; // the decimal output field
@@ -23,7 +22,7 @@ public class OutputView extends JPanel {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        outputLabel = new JLabel("Output");
+        JLabel outputLabel = new JLabel("Output");
         outputLabel.setFont(outputLabel.getFont().deriveFont(outputLabel.getFont().getSize() * 1.8F));
         outputLabel.setForeground(Color.WHITE);
 
