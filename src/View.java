@@ -10,12 +10,17 @@ import java.awt.*;
  */
 public class View extends JFrame {
 
-    private InputView inputView;    // The view for the top (input) portion
-    private OutputView outputView;  // The view for the bottom (output) portion
-    private static final int WIDTH = 525;
-    private static final int HEIGHT = 300;
+    private InputView inputView;            // The View for the top (input) portion
+    private OutputView outputView;          // The View for the bottom (output) portion
+    private static final int WIDTH = 525;   // the preferred width of the JFrame
+    private static final int HEIGHT = 300;  // the preferred height of the JFrame
 
-
+    /**
+     * Constructor
+     *
+     * @param model      the model
+     * @param controller the controller
+     */
     public View(Model model, Controller controller) {
         super("Base Converter");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,7 +30,7 @@ public class View extends JFrame {
         setFocusable(false);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
-
+        // Holds the InputView panel (top) and OutputView panel (bottom)
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
         mainPanel.setBackground(Color.darkGray);
@@ -59,10 +64,18 @@ public class View extends JFrame {
         pack();
     }
 
+    /**
+     * Getter for the OutputView.
+     *
+     * @return the OutputView
+     */
     public OutputView getOutputView() {
         return outputView;
     }
 
+    /**
+     * Updates the JFrame, as well as the InputView and OutputView.
+     */
     public void update() {
         inputView.update();
         outputView.update();

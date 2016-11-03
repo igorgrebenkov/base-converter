@@ -7,8 +7,11 @@ import java.awt.*;
  * It extends JTextField.
  */
 public class TextField extends JTextField {
-    private final static int MAX_FIELD_WIDTH = 400;
+    private final static int MAX_FIELD_WIDTH = 400; // max width of the TextField
 
+    /**
+     * Constructor.
+     */
     public TextField() {
         setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
         setFont(getFont().deriveFont(getFont().getSize() * 1.8f));

@@ -7,6 +7,10 @@ import java.awt.*;
  * It extends JLabel.
  */
 public class OutputFieldLabel extends JLabel {
+    /**
+     * Constructor.
+     * @param label the label text
+     */
     public OutputFieldLabel(String label) {
         super(label);
         setFont(getFont().deriveFont(getFont().getSize() * 1.4f));

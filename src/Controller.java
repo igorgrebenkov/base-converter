@@ -20,6 +20,9 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
     private Model model;
     private View view;
 
+    /**
+     * Constructor.
+     */
     public Controller() {
         model = new Model();
         view = new View(model, this);

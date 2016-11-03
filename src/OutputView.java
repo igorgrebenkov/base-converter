@@ -15,6 +15,12 @@ public class OutputView extends JPanel {
     private JTextField outDecimalField; // the decimal output field
     private JTextField outHexField;     // the hex output field
 
+    /**
+     * Constructor.
+     *
+     * @param model         the model
+     * @param controller    the controller
+     */
     public OutputView(Model model, Controller controller) {
         this.model = model;
         setBackground(Color.darkGray);
@@ -55,6 +61,10 @@ public class OutputView extends JPanel {
         add(outHexField, c);
     }
 
+    /**
+     * Sets all the fields to the string s.
+     * @param s the new string
+     */
     public void setAllFields(String s) {
         outBinaryField.setText(s);
         outOctalField.setText(s);
@@ -62,6 +72,9 @@ public class OutputView extends JPanel {
         outHexField.setText(s);
     }
 
+    /**
+     * Updates all output fields by fetching current string from the model.
+     */
     public void update() {
         outBinaryField.setText(model.getOutBinary());
         outOctalField.setText(model.getOutOctal());

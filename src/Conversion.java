@@ -37,6 +37,12 @@ public class Conversion {
         }
     }
 
+    /**
+     * Updates model with result of binary string conversions.
+     * @param inputString   the input string
+     * @param model         the model
+     * @throws NumberFormatException    thrown when input is invalid
+     */
     private static void convertBinary(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 2);
 
@@ -46,6 +52,12 @@ public class Conversion {
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
+    /**
+     * Updates model with result of octal string conversions.
+     * @param inputString   the input string
+     * @param model         the model
+     * @throws NumberFormatException    thrown when input is invalid
+     */
     private static void convertOctal(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 8);
 
@@ -55,6 +67,12 @@ public class Conversion {
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
+    /**
+     * Updates model with result of decimal string conversions.
+     * @param inputString   the input string
+     * @param model         the model
+     * @throws NumberFormatException    thrown when input is invalid
+     */
     private static void convertDecimal(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 10);
 
@@ -64,6 +82,12 @@ public class Conversion {
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
+    /**
+     * Updates model with result of hex string conversions.
+     * @param inputString   the input string
+     * @param model         the model
+     * @throws NumberFormatException    thrown when input is invalid
+     */
     private static void convertHex(String inputString, Model model) throws NumberFormatException {
         Long inputNum = Long.parseLong(inputString, 16);
 
@@ -73,6 +97,12 @@ public class Conversion {
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
+    /**
+     * Formats a binary string by padding with 0s and
+     * adding spaces to form groups of 4.
+     * @param binary    the binary string to format
+     * @return          the formatted string
+     */
     private static String formatBinaryString(String binary) {
         // Pad with zeros if necessary
         if (binary.length() > 3) {
@@ -100,6 +130,12 @@ public class Conversion {
         return result;
     }
 
+    /**
+     * Formats an octal string by padding with 0s and
+     * adding spaces to form groups of 3.
+     * @param  octal    the octal string to format
+     * @return          the formatted string
+     */
     private static String formatOctalString(String octal) {
         // Pad with zeros if necessary
         if (octal.length() > 3) {
@@ -124,6 +160,12 @@ public class Conversion {
         return result;
     }
 
+    /**
+     * Formats a decimal string with the common convention.
+     * e.g., 23000000 becomes 23 000 000
+     * @param decimal    the decimal string to format
+     * @return          the formatted string
+     */
     private static String formatDecimalString(String decimal) {
         if (decimal.length() > 3) {
             String firstDigit = "";
@@ -157,7 +199,12 @@ public class Conversion {
         }
         return decimal;
     }
-
+    /**
+     * Formats a hex string by padding with 0s and
+     * adding spaces to form groups of 2.
+     * @param hex       the hex string to format
+     * @return          the formatted string
+     */
     private static String formatHexString(String hex) {
         // Pad with zeros if necessary
         if (hex.length() > 2 && hex.length() % 2 == 1) {

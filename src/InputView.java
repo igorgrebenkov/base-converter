@@ -12,6 +12,11 @@ public class InputView extends JPanel {
     private Model model;
     private JTextField inputField = new JTextField();  // the field for user input
 
+    /**
+     * Constructor.
+     * @param model         the model
+     * @param controller    the controller
+     */
     public InputView(Model model, Controller controller) {
         this.model = model;
         setBackground(Color.darkGray);
@@ -36,10 +41,17 @@ public class InputView extends JPanel {
         add(inputField, c);
     }
 
+    /**
+     * Getter for the InputField.
+     * @return the InputField
+     */
     public JTextField getInputField() {
         return inputField;
     }
 
+    /**
+     * Updates the InputField and updates the Model with its text.
+     */
     public void update() {
         model.setInput(inputField.getText());
         revalidate();
