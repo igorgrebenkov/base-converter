@@ -22,6 +22,7 @@ public class Conversion {
      * @param inputString the input number, minus the prefix
      */
     public static void convertNumber(char prefix, String inputString, Model model) throws NumberFormatException {
+        inputString = inputString.replaceAll("\\s",""); // ignore spaces
         switch (prefix) {
             case '%':
                 convertBinary(inputString, model);
