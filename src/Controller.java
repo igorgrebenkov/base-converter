@@ -33,6 +33,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
      **************************/
     /**
      * The actionPerformed ActionEvent handler. Currently unused.
+     *
      * @param e the ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
@@ -44,6 +45,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
      ************************/
     /**
      * The keyTyped KeyEvent handler. Unused.
+     *
      * @param e the KeyEvent
      */
     public void keyTyped(KeyEvent e) {
@@ -86,12 +88,12 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
             model.setInput("");
             view.getInputView().getInputField().setText("");
             view.getOutputView().setAllFields("");
-
         }
     }
 
     /**
      * The keyReleased KeyEvent handler. Unused.
+     *
      * @param e the KeyEvent
      */
     public void keyReleased(KeyEvent e) {
@@ -103,8 +105,9 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
      *************************/
     /**
      * The insertUpdate DocumentEvent handler.
-     *
+     * <p>
      * Used to get input string for conversion from the input textfield.
+     *
      * @param de the DocumentEvent
      */
     public void insertUpdate(DocumentEvent de) {
@@ -120,6 +123,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
 
     /**
      * The changedUpdate DocumentEvent handler. Unused.
+     *
      * @param de the DocumentEvent
      */
     public void changedUpdate(DocumentEvent de) {
@@ -127,8 +131,9 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
 
     /**
      * The removeUpdate DocumentEvent handler.
-     *
+     * <p>
      * Used to update the input string when digits are being deleted.
+     *
      * @param de the DocumentEvent
      */
     public void removeUpdate(DocumentEvent de) {
@@ -163,13 +168,19 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
                     view.getOutputView().setAllFields("invalid number");
                 }
             }
+        } else if (input.length() == 1 && !(
+                input.charAt(0) == '%' ||
+                        input.charAt(0) == '@' ||
+                        input.charAt(0) == '#' ||
+                        input.charAt(0) == '$')) {
+            view.getOutputView().setAllFields("Need valid prefix (%, @, #, $).");
+
         } else {
             model.setOutBinary("");
             model.setOutOctal("");
             model.setOutDecimal("");
             model.setOutHex("");
             view.update();
-
         }
     }
 }
