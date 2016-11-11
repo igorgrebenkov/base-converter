@@ -246,7 +246,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
 
         // Get help html from external file
         try {
-            FileReader reader = new FileReader("bin/help.bin");
+            FileReader reader = new FileReader("docs/QuickGuide.html");
             BufferedReader br = new BufferedReader(reader);
             helpEditorPane.read(br, null);
             br.close();
