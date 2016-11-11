@@ -1,5 +1,5 @@
 /**
- * The class Model contains the state of the program.
+ * <p>The class <b>Model</b> contains the state of the program.</p>
  *
  * @author Igor Grebenkov
  */
@@ -23,6 +23,7 @@ public class Model {
 
     /**
      * Getter for the input string.
+     *
      * @return the input string
      */
     public String getInput() {
@@ -31,6 +32,7 @@ public class Model {
 
     /**
      * Setter for the input string.
+     *
      * @param input the new input string
      */
     public void setInput(String input) {
@@ -39,6 +41,7 @@ public class Model {
 
     /**
      * Getter for the binary output string.
+     *
      * @return the binary output string
      */
     public String getOutBinary() {
@@ -47,6 +50,7 @@ public class Model {
 
     /**
      * Setter for the binary output string.
+     *
      * @param outBinary the new binary string
      */
     public void setOutBinary(String outBinary) {
@@ -55,6 +59,7 @@ public class Model {
 
     /**
      * Getter for the octal output string.
+     *
      * @return the octal string
      */
     public String getOutOctal() {
@@ -63,6 +68,7 @@ public class Model {
 
     /**
      * Setter for the octal output string.
+     *
      * @param outOctal the new octal output string
      */
     public void setOutOctal(String outOctal) {
@@ -71,6 +77,7 @@ public class Model {
 
     /**
      * Getter for the decimal output string.
+     *
      * @return the decimal output string
      */
     public String getOutDecimal() {
@@ -79,6 +86,7 @@ public class Model {
 
     /**
      * Setter for the decimal output string.
+     *
      * @param outDecimal the new decimal output string
      */
     public void setOutDecimal(String outDecimal) {
@@ -87,6 +95,7 @@ public class Model {
 
     /**
      * Getter for the hex output string.
+     *
      * @return the hex output string
      */
     public String getOutHex() {
@@ -95,6 +104,7 @@ public class Model {
 
     /**
      * Setter for the hex output string.
+     *
      * @param outHex the new hex output string
      */
     public void setOutHex(String outHex) {

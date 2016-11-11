@@ -3,11 +3,11 @@ import static java.lang.Long.toHexString;
 import static java.lang.Long.toOctalString;
 
 /**
- * The class Conversion contains helper functions for converting numbers between bases.
+ * <p>The class <b>Conversion</b> contains helper functions for converting numbers between bases.</p>
  * <p>
- * After a conversion, it updates the appropriate text fields.
+ * <p>After a conversion, it updates the appropriate text fields.</p>
  * <p>
- * It contains only static methods.
+ * <p>t contains only static methods.</p>
  *
  * @author Igor Grebenkov
  */
@@ -24,7 +24,7 @@ public class Conversion {
      * @param inputString the input number, minus the prefix
      */
     public static void convertNumber(char prefix, String inputString, Model model) throws NumberFormatException {
-        inputString = inputString.replaceAll("\\s",""); // ignore spaces
+        inputString = inputString.replaceAll("\\s", ""); // ignore spaces
         switch (prefix) {
             case '%':
                 convertNumber(inputString, model, BASE_TWO);
@@ -43,9 +43,10 @@ public class Conversion {
 
     /**
      * Private helper function that converts a number and uses it to update the model.
+     *
      * @param inputString the input string (number to convert)
-     * @param model the model
-     * @param base the base we are converting to
+     * @param model       the model
+     * @param base        the base we are converting to
      */
     private static void convertNumber(String inputString, Model model, int base) {
         Long inputNum = Long.parseLong(inputString, base);
@@ -54,14 +55,14 @@ public class Conversion {
         model.setOutOctal(formatOctalString(toOctalString(inputNum)));
         model.setOutDecimal(formatDecimalString(inputNum.toString()));
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
-
     }
 
     /**
      * Formats a binary string by padding with 0s and
      * adding spaces to form groups of 4.
-     * @param binary    the binary string to format
-     * @return          the formatted string
+     *
+     * @param binary the binary string to format
+     * @return the formatted string
      */
     private static String formatBinaryString(String binary) {
         // Pad with zeros if necessary
@@ -93,8 +94,9 @@ public class Conversion {
     /**
      * Formats an octal string by padding with 0s and
      * adding spaces to form groups of 3.
-     * @param  octal    the octal string to format
-     * @return          the formatted string
+     *
+     * @param octal the octal string to format
+     * @return the formatted string
      */
     private static String formatOctalString(String octal) {
         // Pad with zeros if necessary
@@ -123,8 +125,9 @@ public class Conversion {
     /**
      * Formats a decimal string with the common convention.
      * e.g., 23000000 becomes 23 000 000
-     * @param decimal    the decimal string to format
-     * @return          the formatted string
+     *
+     * @param decimal the decimal string to format
+     * @return the formatted string
      */
     private static String formatDecimalString(String decimal) {
         if (decimal.length() > 3) {
@@ -159,11 +162,13 @@ public class Conversion {
         }
         return decimal;
     }
+
     /**
      * Formats a hex string by padding with 0s and
      * adding spaces to form groups of 2.
-     * @param hex       the hex string to format
-     * @return          the formatted string
+     *
+     * @param hex the hex string to format
+     * @return the formatted string
      */
     private static String formatHexString(String hex) {
         // Pad with zeros if necessary

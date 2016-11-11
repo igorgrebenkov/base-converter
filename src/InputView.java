@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * The class <b>InputView</b> gives the view of the top portion of the program (for user input).
- *
- * It extends JPanel.
+ * <p>The class <b>InputView</b> gives the view of the top portion of the program (for user input).</p>
+ * <p>
+ * <p>It extends JPanel.</p>
  *
  * @author Igor Grebenkov
  */
@@ -15,8 +15,9 @@ public class InputView extends JPanel {
 
     /**
      * Constructor.
-     * @param model         the model
-     * @param controller    the controller
+     *
+     * @param model      the model
+     * @param controller the controller
      */
     public InputView(Model model, Controller controller) {
         this.model = model;
@@ -46,6 +47,7 @@ public class InputView extends JPanel {
 
     /**
      * Getter for the InputField.
+     *
      * @return the InputField
      */
     public JTextField getInputField() {

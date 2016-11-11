@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * The class <b>Main</b> contains the main method of the program.

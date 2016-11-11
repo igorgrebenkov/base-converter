@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * The class <b>OutputView</b> gives the view of the bottom portion of the program (for output).
+ * <p>The class <b>OutputView</b> gives the view of the bottom portion of the program (for output).</p>
  * <p>
- * It extends JPanel.
+ * <p>It extends JPanel.</p>
  *
  * @author Igor Grebenkov
  */
@@ -19,8 +19,8 @@ public class OutputView extends JPanel {
     /**
      * Constructor.
      *
-     * @param model         the model
-     * @param controller    the controller
+     * @param model      the model
+     * @param controller the controller
      */
     public OutputView(Model model, Controller controller) {
         this.model = model;
@@ -66,6 +66,7 @@ public class OutputView extends JPanel {
 
     /**
      * Sets all the fields to the string s.
+     *
      * @param s the new string
      */
     public void setAllFields(String s) {

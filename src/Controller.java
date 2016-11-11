@@ -16,9 +16,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * The class <b>Controller</b> handles all events and communicates changes between the model and view.
+ * <p>The class <b>Controller</b> handles all events and
+ * communicates changes between the model and view.</p>
  * <p>
- * It implements ActionListener, DocumentListener, and KeyListener.
+ * <p>It implements ActionListener, DocumentListener, and KeyListener.</p>
  *
  * @author Igor Grebenkov
  */
@@ -194,7 +195,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
 
     /**
      * Private helper function that copies a string to the clipboard.
-     *
+     * <p>
      * Used to implement keyboard shortcuts for copying input/output fields.
      */
     private void clipBoardAction(String s) {
@@ -205,7 +206,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
 
     /**
      * Private helper function for the help sub-item in the help JMenuBar item.
-     *
+     * <p>
      * Reads from the help.bin file to load html documentation for how to
      * use the application. Loads the text into a JEditorPane and displays
      * it in an external window.
@@ -224,7 +225,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
         JEditorPane helpEditorPane = new JEditorPane();
         helpEditorPane.setContentType("text/html");
         helpEditorPane.setEditable(false);
-        helpEditorPane.setBorder(new EmptyBorder(0,0,0,0));
+        helpEditorPane.setBorder(new EmptyBorder(0, 0, 0, 0));
         helpEditorPane.setPreferredSize(new Dimension(PANE_WIDTH, PANE_HEIGHT));
         helpEditorPane.setBorder(new EmptyBorder(
                 BORDER_WIDTH,

@@ -1,12 +1,17 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicMenuBarUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
- * The class <b>View</b> contains the main View of the program.
+ * <p>The class <b>View</b> contains the main View of the program.</p>
  * <p>
- * It extends JFrame.
+ * <p>It extends JFrame.</p>
  *
  * @author Igor Grebenkov
  */
@@ -45,13 +50,31 @@ public class View extends JFrame {
         JMenuItem aboutItem;    // opens about dialog; in help menu
 
         menuBar = new JMenuBar();
+        menuBar.setBorderPainted(false);
+        menuBar.setUI(new BasicMenuBarUI() {
+            public void paint(Graphics g, JComponent c) {
+                g.setColor(Color.darkGray);
+                g.fillRect(0, 0, c.getWidth(), c.getHeight());
+            }
+        });
 
         // Help menu
-        helpMenu = new JMenu("Help");
+        helpMenu = new JMenu();
+
+        // Sets icon for help menu by reading external image
+        try {
+            BufferedImage brImg = ImageIO.read(new File("img/menu_icon.png"));
+            ImageIcon menuIcon = new ImageIcon(brImg);
+            helpMenu.setIcon(menuIcon);
+        } catch (IOException e) {
+            System.err.println("IOException: " + e.getMessage());
+        }
+
         helpMenu.setMnemonic(KeyEvent.VK_H);
         helpMenu.getAccessibleContext().setAccessibleDescription(
                 "Contains items that open the help and about dialogs."
         );
+        helpMenu.setForeground(Color.white);
         menuBar.add(helpMenu);
 
         // Help menu item
