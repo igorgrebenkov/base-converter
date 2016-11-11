@@ -31,7 +31,7 @@ For example, to enter the binary digit 1010 for conversion, the user must input:
 
     %1010
 
-To enter a hex number,
+To enter the hex number 3A,
 
     $3A
 
@@ -40,6 +40,7 @@ and so on.
 Using a digit incompatible with a prefix will present the user with the error message, "invalid number".
 
 For example, 
+    
     %10012
 
 is invalid because there is no 2 digit in binary. 
@@ -64,19 +65,27 @@ The first four keyboard shortcuts were chosen because they correspond to the num
 For example, *SHIFT+5* is the *%* character, and so *CTRL+5* is its associated copy shortcut. 
 
 # Output Formatting
-Currently, the output of conversions is automatically spaced accordingly:
+The conversion output is automatically spaced accordingly:
 
 ### Binary
-Groups of 4 bits. e.g. 10100111 becomes 1010 0111. 
+Groups of 4 bits. e.g.
+
+    10100111 becomes 1010 0111
 
 ### Octal
-Groups of 3 digits. e.g. 134252 becomes 134 252
+Groups of 3 digits. e.g. 
+    
+    134252 becomes 134 252
 
 ### Decimal
-Grouped in thousands. e.g. 10000 becomes 10 000; 1100000 becomes 1 100 000.
+Grouped in thousands. e.g. 
+
+    10000 becomes 10 000; 1100000 becomes 1 100 000.
 
 ### Hex
-Groups of 2 digits (8 bits). e.g. 3A6F becomes 3A 6F. 
+Groups of 2 digits (8 bits). e.g.
+
+    3A6F becomes 3A 6F
 
 
 
