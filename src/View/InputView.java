@@ -37,7 +37,7 @@ public class InputView extends JPanel {
         inputField.getDocument().addDocumentListener(controller);
         inputField.addKeyListener(controller);
 
-        JLabel spacer = new JLabel("            "); // Maintains spacing with output TextFields
+        JLabel spacer = new JLabel("                 "); // Maintains spacing with output TextFields
         spacer.setFont(
                 spacer.getFont().deriveFont(
                         spacer.getFont().getSize() * TEXT_SCALING_FACTOR));

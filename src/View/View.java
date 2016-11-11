@@ -65,7 +65,6 @@ public class View extends JFrame {
 
         // Help menu
         helpMenu = new JMenu();
-
         // Sets icon for help menu by reading external image
         try {
             BufferedImage brImg = ImageIO.read(new File("img/menu_icon.png"));
