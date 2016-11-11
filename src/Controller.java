@@ -61,41 +61,41 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
 
     /**
      * The KeyPressed KeyEvent handler. Used to implement keyboard
-     * shortcuts for copying conversion outputs to the clipboard.
+     * shortcuts.
      * <p>
-     * CTRL+5 -> binary
-     * CTRL+2 -> octal
-     * CTRL+3 -> decimal
-     * CTRL+3 -> hex
+     * CTRL+5 -> copy binary output
+     * CTRL+2 -> copy octal output
+     * CTRL+3 -> copy decimal output
+     * CTRL+3 -> copy hex output
+     * CTRL+i -> copy input
+     * CTRL+c -> clear input (and output)
      *
      * @param e the KeyEvent
      */
     public void keyPressed(KeyEvent e) {
-
-        if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_5) {         // copy binary output to clipboard
-            StringSelection stringSelection = new StringSelection(model.getOutBinary());
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(stringSelection, null);
-        } else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_2) {  // copy octal output to clipboard
-            StringSelection stringSelection = new StringSelection(model.getOutOctal());
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(stringSelection, null);
-        } else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_3) {  // copy octal output to clipboard
-            StringSelection stringSelection = new StringSelection(model.getOutDecimal());
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(stringSelection, null);
-        } else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_4) {  // copy hex output to clipboard
-            StringSelection stringSelection = new StringSelection(model.getOutHex());
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(stringSelection, null);
-        } else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_I) {  // copy current input to clipboard
-            StringSelection stringSelection = new StringSelection(model.getInput().substring(1).trim());
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(stringSelection, null);
-        } else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_C) {  // clear input field
-            model.setInput("");
-            view.getInputView().getInputField().setText("");
-            view.getOutputView().setAllFields("");
+        if (e.isControlDown()) {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_5:
+                    clipBoardAction(model.getOutBinary());
+                    break;
+                case KeyEvent.VK_2:
+                    clipBoardAction(model.getOutOctal());
+                    break;
+                case KeyEvent.VK_3:
+                    clipBoardAction(model.getOutDecimal());
+                    break;
+                case KeyEvent.VK_4:
+                    clipBoardAction(model.getOutHex());
+                    break;
+                case KeyEvent.VK_I:
+                    clipBoardAction(model.getInput().substring(1).trim());
+                    break;
+                case KeyEvent.VK_C:
+                    model.setInput("");
+                    view.getInputView().getInputField().setText("");
+                    view.getOutputView().setAllFields("");
+                    break;
+            }
         }
     }
 
@@ -190,6 +190,17 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
             model.setOutHex("");
             view.update();
         }
+    }
+
+    /**
+     * Private helper function that copies a string to the clipboard.
+     *
+     * Used to implement keyboard shortcuts for copying input/output fields.
+     */
+    private void clipBoardAction(String s) {
+        StringSelection stringSelection = new StringSelection(s);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
     }
 
     /**
