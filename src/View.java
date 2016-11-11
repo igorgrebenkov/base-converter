@@ -12,10 +12,11 @@ import java.awt.event.KeyEvent;
  */
 public class View extends JFrame {
 
-    private InputView inputView;            // The View for the top (input) portion
-    private OutputView outputView;          // The View for the bottom (output) portion
-    private static final int WIDTH = 525;   // the preferred width of the JFrame
-    private static final int HEIGHT = 300;  // the preferred height of the JFrame
+    private InputView inputView;                            // The View for the top (input) portion
+    private OutputView outputView;                          // The View for the bottom (output) portion
+    private static final int FRAME_WIDTH = 525;             // the preferred width of the JFrame
+    private static final int FRAME_HEIGHT = 300;            // the preferred height of the JFrame
+    private static final float TEXT_SCALING_FACTOR = 1.8f;  // scaling factor for label text
 
     /**
      * Constructor
@@ -30,7 +31,7 @@ public class View extends JFrame {
         setResizable(false);
         setVisible(true);
         setFocusable(false);
-        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 
         /******************* Main Panel *******************/
         JPanel mainPanel = new JPanel();
@@ -75,32 +76,48 @@ public class View extends JFrame {
         setJMenuBar(menuBar);
 
         /*************** Input Label & View ****************/
+        final int INPUT_PANEL_WIDTH = 475;      // Maximum width of the inputLabelPanel
+        final int INPUT_PANEL_HEIGHT = 100;     // Maximum height of the inputLabelPanel
+
         JPanel inputLabelPanel = new JPanel();
         inputLabelPanel.setBackground(Color.darkGray);
         JLabel inputLabel = new JLabel("          Input");  // super hacky spacing
-        inputLabel.setFont(inputLabel.getFont().deriveFont(inputLabel.getFont().getSize() * 1.8f));
+        inputLabel.setFont(
+                inputLabel.getFont().deriveFont(
+                        inputLabel.getFont().getSize() * TEXT_SCALING_FACTOR));
         inputLabel.setForeground(Color.WHITE);
         inputLabelPanel.add(inputLabel);
         inputView = new InputView(model, controller);
-        inputView.setMaximumSize(new Dimension(475, 100));
+        inputView.setMaximumSize(new Dimension(
+                INPUT_PANEL_WIDTH,
+                INPUT_PANEL_HEIGHT));
 
         /*************** Output Label & View ***************/
+        final int OUTPUT_PANEL_WIDTH = 475;     // Maximum width of the outputLabelPanel
+        final int OUTPUT_PANEL_HEIGHT = 700;    // Maximum height of the outputLabelPanel
+
         JPanel outputLabelPanel = new JPanel();
         outputLabelPanel.setBackground(Color.darkGray);
         JLabel outputLabel = new JLabel("          Output");  // super hacky spacing
-        outputLabel.setFont(outputLabel.getFont().deriveFont(outputLabel.getFont().getSize() * 1.8f));
+        outputLabel.setFont(
+                outputLabel.getFont().deriveFont(
+                        outputLabel.getFont().getSize() * TEXT_SCALING_FACTOR));
         outputLabel.setForeground(Color.WHITE);
         outputLabelPanel.add(outputLabel);
         outputView = new OutputView(model, controller);
-        outputView.setMaximumSize(new Dimension(475, 700));
+        outputView.setMaximumSize(new Dimension(
+                OUTPUT_PANEL_WIDTH,
+                OUTPUT_PANEL_HEIGHT));
 
         /*********** Add everything to mainPanel **********/
+        final int SPACER_HEIGHT = 10;           // Height of RigidArea used as a spacer
+
         mainPanel.add(inputLabelPanel, BorderLayout.PAGE_START);
         mainPanel.add(inputView, BorderLayout.NORTH);
-        mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        mainPanel.add(Box.createRigidArea(new Dimension(0, SPACER_HEIGHT)));
         mainPanel.add(outputLabelPanel, BorderLayout.SOUTH);
         mainPanel.add(outputView, BorderLayout.PAGE_END);
-        mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        mainPanel.add(Box.createRigidArea(new Dimension(0, SPACER_HEIGHT)));
         add(mainPanel);
         inputView.getInputField().requestFocus();
         pack();

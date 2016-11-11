@@ -10,7 +10,8 @@ import java.awt.*;
  */
 public class InputView extends JPanel {
     private Model model;
-    private JTextField inputField = new JTextField();  // the field for user input
+    private JTextField inputField = new JTextField();       // the field for user input
+    private static final float TEXT_SCALING_FACTOR = 1.4f;  // scaling factor for label text
 
     /**
      * Constructor.
@@ -31,7 +32,9 @@ public class InputView extends JPanel {
         inputField.addKeyListener(controller);
 
         JLabel spacer = new JLabel("            "); // Maintains spacing with output TextFields
-        spacer.setFont(spacer.getFont().deriveFont(spacer.getFont().getSize() * 1.4f));
+        spacer.setFont(
+                spacer.getFont().deriveFont(
+                        spacer.getFont().getSize() * TEXT_SCALING_FACTOR));
         spacer.setLabelFor(inputField);
 
         c.fill = GridBagConstraints.HORIZONTAL;

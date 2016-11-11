@@ -10,10 +10,11 @@ import java.awt.*;
  */
 public class OutputView extends JPanel {
     private Model model;
-    private JTextField outBinaryField;  // the binary output field
-    private JTextField outOctalField;   // the octal output field
-    private JTextField outDecimalField; // the decimal output field
-    private JTextField outHexField;     // the hex output field
+    private JTextField outBinaryField;                      // the binary output field
+    private JTextField outOctalField;                       // the octal output field
+    private JTextField outDecimalField;                     // the decimal output field
+    private JTextField outHexField;                         // the hex output field
+    private static final float TEXT_SCALING_FACTOR = 1.8f;  // scaling factor for label text
 
     /**
      * Constructor.
@@ -29,7 +30,9 @@ public class OutputView extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
 
         JLabel outputLabel = new JLabel("Output");
-        outputLabel.setFont(outputLabel.getFont().deriveFont(outputLabel.getFont().getSize() * 1.8F));
+        outputLabel.setFont(
+                outputLabel.getFont().deriveFont(
+                        outputLabel.getFont().getSize() * TEXT_SCALING_FACTOR));
         outputLabel.setForeground(Color.WHITE);
 
         outBinaryField = new TextField();

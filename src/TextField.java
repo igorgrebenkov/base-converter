@@ -8,13 +8,14 @@ import java.awt.*;
  */
 public class TextField extends JTextField {
     private final static int MAX_FIELD_WIDTH = 400; // max width of the TextField
+    private final static float TEXT_SCALING_FACTOR = 1.8f;
 
     /**
      * Constructor.
      */
     public TextField() {
         setMaximumSize(new Dimension(MAX_FIELD_WIDTH, 30));
-        setFont(getFont().deriveFont(getFont().getSize() * 1.8f));
+        setFont(getFont().deriveFont(getFont().getSize() * TEXT_SCALING_FACTOR));
         setEditable(false);
         setHorizontalAlignment(JTextField.CENTER);
         setFocusable(false);

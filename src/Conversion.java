@@ -12,6 +12,10 @@ import static java.lang.Long.toOctalString;
  * @author Igor Grebenkov
  */
 public class Conversion {
+    private final static int BASE_TWO = 2;
+    private final static int BASE_EIGHT = 8;
+    private final static int BASE_TEN = 10;
+    private final static int BASE_SIXTEEN = 16;
 
     /**
      * Calls the appropriate methods to make the requested conversion.
@@ -44,7 +48,7 @@ public class Conversion {
      * @throws NumberFormatException    thrown when input is invalid
      */
     private static void convertBinary(String inputString, Model model) throws NumberFormatException {
-        Long inputNum = Long.parseLong(inputString, 2);
+        Long inputNum = Long.parseLong(inputString, BASE_TWO);
 
         model.setOutBinary(formatBinaryString(inputString));
         model.setOutOctal(formatOctalString(toOctalString(inputNum)));
@@ -59,7 +63,7 @@ public class Conversion {
      * @throws NumberFormatException    thrown when input is invalid
      */
     private static void convertOctal(String inputString, Model model) throws NumberFormatException {
-        Long inputNum = Long.parseLong(inputString, 8);
+        Long inputNum = Long.parseLong(inputString, BASE_EIGHT);
 
         model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
         model.setOutOctal(formatOctalString(inputString));
@@ -74,7 +78,7 @@ public class Conversion {
      * @throws NumberFormatException    thrown when input is invalid
      */
     private static void convertDecimal(String inputString, Model model) throws NumberFormatException {
-        Long inputNum = Long.parseLong(inputString, 10);
+        Long inputNum = Long.parseLong(inputString, BASE_TEN);
 
         model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
         model.setOutOctal(formatOctalString(toOctalString(inputNum)));
@@ -89,7 +93,7 @@ public class Conversion {
      * @throws NumberFormatException    thrown when input is invalid
      */
     private static void convertHex(String inputString, Model model) throws NumberFormatException {
-        Long inputNum = Long.parseLong(inputString, 16);
+        Long inputNum = Long.parseLong(inputString, BASE_SIXTEEN);
 
         model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
         model.setOutOctal(formatOctalString(toOctalString(inputNum)));
