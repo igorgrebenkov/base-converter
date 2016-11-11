@@ -68,24 +68,28 @@ For example, *SHIFT+5* is the *%* character, and so *CTRL+5* is its associated c
 The conversion output is automatically spaced accordingly:
 
 ### Binary
-Groups of 4 bits. e.g.
+Groups of 4 bits, with zero padding.
 
     10100111 becomes 1010 0111
+    111101101 becomes 0001 1110 1101
 
 ### Octal
-Groups of 3 digits. e.g. 
+Groups of 3 digits, with zero padding.
     
     134252 becomes 134 252
+    1634152 becomes 001 634 152
 
 ### Decimal
-Grouped in thousands. e.g. 
+Grouped in thousands. No zero padding.
 
-    10000 becomes 10 000; 1100000 becomes 1 100 000.
+    10000 becomes 10 000
+    1100000 becomes 1 100 000.
 
 ### Hex
-Groups of 2 digits (8 bits). e.g.
+Groups of 2 digits (8 bits), with zero padding.
 
     3A6F becomes 3A 6F
+    5B7A1 becomes 05 B7 A1
 
 
 
