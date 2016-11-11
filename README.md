@@ -3,10 +3,12 @@ mouse-free base conversion between binary/octal/decimal/hex
 
 # Why another base converter?
 Most of the base converters I've seen have two annoying traits:
+
     1. The user must interact with some gui element to select the desired base for conversion.
     2. The user must interact with some gui element to specify specify the base of the input digit. 
 
 This application aims to solve these problems by,
+
     1. Displaying result of conversion to binary/octal/decimal/hex simultaneously.
     2. Indicating the input base using a one character prefix before the input digits.
 
@@ -17,6 +19,7 @@ This enables the user to quickly convert between bases and save the results, wit
 
 # How to use it.
 The first character in the input field must be one of the following:
+
     %  -  binary input
     @  -  octal input
     \#  -  decimal input
@@ -45,12 +48,12 @@ Using a digit incompatible with a prefix will present the user with the error me
 # Keyboard Shortcuts
 A number of keyboard shortcuts are available to copy the input/output fields to the clipboard.
 
-    *CTRL + 5*  -  copy binary output field
-    *CTRL + 2*  -  copy octal output field
-    *CTRL + 3*  -  copy decimal output field
-    *CTRL + 4*  -  copy hex output field
-    *CTRL + i*  -  copy input field 
-    *CTRL + c*  -  clear input field
+    CTRL + 5  -  copy binary output field
+    CTRL + 2  -  copy octal output field
+    CTRL + 3  -  copy decimal output field
+    CTRL + 4  -  copy hex output field
+    CTRL + i  -  copy input field 
+    CTRL + c  -  clear input field
 
 The first four keyboard shortcuts were chosen because they correspond to the number keys associated with input prefixes.
 For example, *SHIFT+5* is the *%* character, and so *CTRL+5* is its associated copy shortcut. 
