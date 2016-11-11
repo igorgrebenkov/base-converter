@@ -1,3 +1,4 @@
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
@@ -37,7 +38,16 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
      * @param e the ActionEvent
      */
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getActionCommand().equals("helpDialog")) {
+            JFrame helpTextFrame = new JFrame();
+            JTextArea helpTextArea = new JTextArea("assdasdasdasdasdadasdasdasdasdasasdasd");
+            JPanel helpTextPanel = new JPanel();
+            helpTextPanel.add(helpTextArea);
+            helpTextFrame.add(helpTextPanel);
+            helpTextFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            helpTextFrame.pack();
+            helpTextFrame.setVisible(true);
+        }
     }
 
     /************************

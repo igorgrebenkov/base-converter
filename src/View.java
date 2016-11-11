@@ -60,6 +60,8 @@ public class View extends JFrame {
         helpItem.getAccessibleContext().setAccessibleDescription(
                 "Opens the help dialog."
         );
+        helpItem.addActionListener(controller);
+        helpItem.setActionCommand("helpDialog");
         helpMenu.add(helpItem);
 
         // About menu item
