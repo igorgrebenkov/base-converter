@@ -1,0 +1,81 @@
+<div>   
+    <b><font size="7" face="Bookman">How to use this application:</font><b>
+    <hr>
+    <div>   
+    <font size="6" face="Bookman">
+        <p>The first character in the input field
+        must be one of the following:
+
+        <ul style="list-style-type:none">
+            <li> %  -  binary input </li>
+            <li> @  -  octal input </li>
+            <li> #  -  decimal input </li>
+            <li> $  - hex input </li>
+        </ul>
+        Valid input digits following the prefix character 
+        will be converted as they are entered in real-time.</p>
+
+        <p>For example, to enter the binary digit 1010 
+        for conversion, the user must input:
+
+        <ul style="list-style-type:none">
+            <li> %1010 </li>
+        </ul>
+
+        To enter the hex number 3A,
+
+        <ul style="list-style-type:none">
+            <li> $3A </li>
+        </ul>
+
+        and so on.</p>
+
+        <p>Using a digit incompatible with a prefix will present 
+        the user with the error message, "invalid number".
+
+        For example,
+
+        <ul style="list-style-type:none">    
+            <li> %10012 </li>
+        </ul>
+
+        is invalid because there is no 2 digit in binary.</p>
+
+        <p><b>Note:</b> Whitespace is ignored in user input, 
+        so the following are also valid inputs:</p>
+
+        <ul style="list-style-type:none">
+            <li> %1010 0110 </li> 
+            <li> $3A 4E 6F </li>
+            <li> %1 0 111 0 1111 </li>
+        </ul>
+    </font>
+    </div>
+
+    <b><font size="7" face="Bookman">Keyboard Shortcuts</font></b>
+    <hr>
+    <div>
+    <font size="6" face="Bookman">
+        <p>A number of keyboard shortcuts are available to 
+        copy the input/output fields to the clipboard.
+
+        <ul style="list-style-type:none">
+            <li> CTRL + 5  -  copy binary output field </li>
+            <li> CTRL + 2  -  copy octal output field </li>
+            <li> CTRL + 3  -  copy decimal output field </li>
+            <li> CTRL + 4  -  copy hex output field </li>
+            <li> CTRL + i  -  copy input field </li>
+            <li> CTRL + c  -  clear input field </li>
+        </ul>
+
+        The first four keyboard shortcuts were chosen 
+        because they correspond to the number keys 
+        associated with input prefixes.</p>
+
+        <p>For example, <i>SHIFT+5</i> is the <i>%</i> character, 
+        and so <i>CTRL+5</i> is its associated copy shortcut.</p>
+    </font>
+    </div>
+
+
+

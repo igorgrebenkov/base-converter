@@ -1,14 +1,19 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.datatransfer.*;
-import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * The class <b>Controller</b> handles all events and communicates changes between the model and view.
@@ -39,14 +44,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("helpDialog")) {
-            JFrame helpTextFrame = new JFrame();
-            JTextArea helpTextArea = new JTextArea("assdasdasdasdasdadasdasdasdasdasasdasd");
-            JPanel helpTextPanel = new JPanel();
-            helpTextPanel.add(helpTextArea);
-            helpTextFrame.add(helpTextPanel);
-            helpTextFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            helpTextFrame.pack();
-            helpTextFrame.setVisible(true);
+            helpMenuItemAction();
         }
     }
 
@@ -192,5 +190,66 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
             model.setOutHex("");
             view.update();
         }
+    }
+
+    /**
+     * Private helper function for the help sub-item in the help JMenuBar item.
+     *
+     * Reads from the help.bin file to load html documentation for how to
+     * use the application. Loads the text into a JEditorPane and displays
+     * it in an external window.
+     */
+    private void helpMenuItemAction() {
+        // Constants for Swing element dimensions
+        final int PANE_WIDTH = 900;
+        final int PANE_HEIGHT = 700;
+        final int BORDER_WIDTH = 10;
+
+        /********** Main JFrame for Help Window **********/
+        JFrame helpTextFrame = new JFrame();
+        helpTextFrame.setBackground(Color.white);
+
+        /********** JEditorPane for Help Text ***********/
+        JEditorPane helpEditorPane = new JEditorPane();
+        helpEditorPane.setContentType("text/html");
+        helpEditorPane.setEditable(false);
+        helpEditorPane.setBorder(new EmptyBorder(0,0,0,0));
+        helpEditorPane.setPreferredSize(new Dimension(PANE_WIDTH, PANE_HEIGHT));
+        helpEditorPane.setBorder(new EmptyBorder(
+                BORDER_WIDTH,
+                BORDER_WIDTH,
+                BORDER_WIDTH,
+                BORDER_WIDTH));
+
+        // Get help html from external file
+        try {
+            FileReader reader = new FileReader("bin/help.bin");
+            BufferedReader br = new BufferedReader(reader);
+            helpEditorPane.read(br, null);
+            br.close();
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("FileNotFoundException: " + fnfe.getMessage());
+        } catch (IOException ioe) {
+            System.out.println("IOException: " + ioe.getMessage());
+        }
+
+        /********** JScrollPane for JEditorPane *********/
+        JScrollPane helpScrollPane = new JScrollPane(helpEditorPane);
+        helpScrollPane.setHorizontalScrollBarPolicy(
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        helpScrollPane.setVerticalScrollBarPolicy(
+                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+        /********** JPanel for Help Window **********/
+        JPanel helpTextPanel = new JPanel();
+        helpTextPanel.setLayout(new BorderLayout());
+        helpTextPanel.setBackground(Color.white);
+
+        /********** Add to JFrame and display **********/
+        helpTextPanel.add(helpScrollPane, BorderLayout.CENTER);
+        helpTextFrame.add(helpTextPanel);
+        helpTextFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        helpTextFrame.pack();
+        helpTextFrame.setVisible(true);
     }
 }
