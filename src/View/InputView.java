@@ -1,8 +1,13 @@
+package View;
+
+import Controller.*;
+import Model.*;
+
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * <p>The class <b>InputView</b> gives the view of the top portion of the program (for user input).</p>
+ * <p>The class <b>View.InputView</b> gives the view of the top portion of the program (for user input).</p>
  * <p>
  * <p>It extends JPanel.</p>
  *
@@ -55,7 +60,7 @@ public class InputView extends JPanel {
     }
 
     /**
-     * Updates the InputField and updates the Model with its text.
+     * Updates the InputField and updates the Model.Model with its text.
      */
     public void update() {
         model.setInput(inputField.getText());

@@ -1,3 +1,8 @@
+package View;
+
+import Controller.*;
+import Model.*;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicMenuBarUI;
@@ -9,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * <p>The class <b>View</b> contains the main View of the program.</p>
+ * <p>The class <b>View.View</b> contains the main View.View of the program.</p>
  * <p>
  * <p>It extends JFrame.</p>
  *
@@ -17,8 +22,8 @@ import java.io.IOException;
  */
 public class View extends JFrame {
 
-    private InputView inputView;                            // The View for the top (input) portion
-    private OutputView outputView;                          // The View for the bottom (output) portion
+    private InputView inputView;                            // The View.View for the top (input) portion
+    private OutputView outputView;                          // The View.View for the bottom (output) portion
     private static final int FRAME_WIDTH = 525;             // the preferred width of the JFrame
     private static final int FRAME_HEIGHT = 300;            // the preferred height of the JFrame
     private static final float TEXT_SCALING_FACTOR = 1.8f;  // scaling factor for label text
@@ -98,7 +103,7 @@ public class View extends JFrame {
         helpMenu.add(aboutItem);
         setJMenuBar(menuBar);
 
-        /*************** Input Label & View ****************/
+        /*************** Input Label & View.View ****************/
         final int INPUT_PANEL_WIDTH = 475;      // Maximum width of the inputLabelPanel
         final int INPUT_PANEL_HEIGHT = 100;     // Maximum height of the inputLabelPanel
 
@@ -115,7 +120,7 @@ public class View extends JFrame {
                 INPUT_PANEL_WIDTH,
                 INPUT_PANEL_HEIGHT));
 
-        /*************** Output Label & View ***************/
+        /*************** Output Label & View.View ***************/
         final int OUTPUT_PANEL_WIDTH = 475;     // Maximum width of the outputLabelPanel
         final int OUTPUT_PANEL_HEIGHT = 700;    // Maximum height of the outputLabelPanel
 
@@ -147,25 +152,25 @@ public class View extends JFrame {
     }
 
     /**
-     * Getter for the InputView.
+     * Getter for the View.InputView.
      *
-     * @return the OutputView
+     * @return the View.OutputView
      */
     public InputView getInputView() {
         return inputView;
     }
 
     /**
-     * Getter for the OutputView.
+     * Getter for the View.OutputView.
      *
-     * @return the OutputView
+     * @return the View.OutputView
      */
     public OutputView getOutputView() {
         return outputView;
     }
 
     /**
-     * Updates the JFrame, as well as the InputView and OutputView.
+     * Updates the JFrame, as well as the View.InputView and View.OutputView.
      */
     public void update() {
         inputView.update();

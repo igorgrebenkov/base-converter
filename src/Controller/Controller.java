@@ -1,3 +1,8 @@
+package Controller;
+
+import View.*;
+import Model.*;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
@@ -16,7 +21,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * <p>The class <b>Controller</b> handles all events and
+ * <p>The class <b>Controller.Controller</b> handles all events and
  * communicates changes between the model and view.</p>
  * <p>
  * <p>It implements ActionListener, DocumentListener, and KeyListener.</p>
@@ -159,7 +164,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
     /**
      * Private helper function that process the input. When a valid
      * prefix (% - binary, @ octal, # - decimal, $ - hex) is detected, the
-     * input string is converted and output via the Conversion class.
+     * input string is converted and output via the Controller.Conversion class.
      *
      * @param input the input string
      */

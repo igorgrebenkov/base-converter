@@ -1,5 +1,7 @@
+package Model;
+
 /**
- * <p>The class <b>Model</b> contains the state of the program.</p>
+ * <p>The class <b>Model.Model</b> contains the state of the program.</p>
  *
  * @author Igor Grebenkov
  */

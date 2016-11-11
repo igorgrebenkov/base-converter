@@ -1,3 +1,4 @@
+import Controller.*;
 import javax.swing.*;
 
 /**
@@ -5,7 +6,7 @@ import javax.swing.*;
  *
  * @author Igor Grebenkov
  */
-public class Main {
+public class BaseConverter {
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

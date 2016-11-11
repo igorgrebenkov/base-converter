@@ -1,9 +1,13 @@
+package Controller;
+
+import Model.*;
+
 import static java.lang.Long.toBinaryString;
 import static java.lang.Long.toHexString;
 import static java.lang.Long.toOctalString;
 
 /**
- * <p>The class <b>Conversion</b> contains helper functions for converting numbers between bases.</p>
+ * <p>The class <b>Controller.Conversion</b> contains helper functions for converting numbers between bases.</p>
  * <p>
  * <p>After a conversion, it updates the appropriate text fields.</p>
  * <p>

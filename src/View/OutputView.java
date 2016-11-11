@@ -1,8 +1,13 @@
+package View;
+
+import Controller.*;
+import Model.*;
+
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * <p>The class <b>OutputView</b> gives the view of the bottom portion of the program (for output).</p>
+ * <p>The class <b>View.OutputView</b> gives the view of the bottom portion of the program (for output).</p>
  * <p>
  * <p>It extends JPanel.</p>
  *
