@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 /**
  * The class <b>View</b> contains the main View of the program.
@@ -30,11 +32,47 @@ public class View extends JFrame {
         setFocusable(false);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
 
-        // Holds the InputView panel (top) and OutputView panel (bottom)
+        /******************* Main Panel *******************/
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
         mainPanel.setBackground(Color.darkGray);
 
+        /******************** Menu bar ********************/
+        JMenuBar menuBar;       // the menuBar
+        JMenu helpMenu;         // the helpMenu
+        JMenuItem helpItem;     // opens help dialog; in help menu
+        JMenuItem aboutItem;    // opens about dialog; in help menu
+
+        menuBar = new JMenuBar();
+
+        // Help menu
+        helpMenu = new JMenu("Help");
+        helpMenu.setMnemonic(KeyEvent.VK_H);
+        helpMenu.getAccessibleContext().setAccessibleDescription(
+                "Contains items that open the help and about dialogs."
+        );
+        menuBar.add(helpMenu);
+
+        // Help menu item
+        helpItem = new JMenuItem("Help", KeyEvent.VK_H);
+        helpItem.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_H, ActionEvent.ALT_MASK));
+        helpItem.getAccessibleContext().setAccessibleDescription(
+                "Opens the help dialog."
+        );
+        helpMenu.add(helpItem);
+
+        // About menu item
+        aboutItem = new JMenuItem("About", KeyEvent.VK_A);
+        aboutItem.setAccelerator(KeyStroke.getKeyStroke(
+                KeyEvent.VK_A, ActionEvent.ALT_MASK));
+        aboutItem.getAccessibleContext().setAccessibleDescription(
+                "Opens the about dialog."
+        );
+        helpMenu.add(aboutItem);
+        setJMenuBar(menuBar);
+
+        /*************** Input Label & View ****************/
         JPanel inputLabelPanel = new JPanel();
         inputLabelPanel.setBackground(Color.darkGray);
         JLabel inputLabel = new JLabel("          Input");  // super hacky spacing
@@ -44,6 +82,7 @@ public class View extends JFrame {
         inputView = new InputView(model, controller);
         inputView.setMaximumSize(new Dimension(475, 100));
 
+        /*************** Output Label & View ***************/
         JPanel outputLabelPanel = new JPanel();
         outputLabelPanel.setBackground(Color.darkGray);
         JLabel outputLabel = new JLabel("          Output");  // super hacky spacing
@@ -53,6 +92,7 @@ public class View extends JFrame {
         outputView = new OutputView(model, controller);
         outputView.setMaximumSize(new Dimension(475, 700));
 
+        /*********** Add everything to mainPanel **********/
         mainPanel.add(inputLabelPanel, BorderLayout.PAGE_START);
         mainPanel.add(inputView, BorderLayout.NORTH);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
