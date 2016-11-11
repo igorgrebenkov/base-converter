@@ -100,7 +100,10 @@ public class View extends JFrame {
         aboutItem.getAccessibleContext().setAccessibleDescription(
                 "Opens the about dialog."
         );
+        aboutItem.addActionListener(controller);
+        aboutItem.setActionCommand("aboutDialog");
         helpMenu.add(aboutItem);
+
         setJMenuBar(menuBar);
 
         /*************** Input Label & View.View ****************/

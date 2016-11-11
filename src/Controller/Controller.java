@@ -2,11 +2,14 @@ package Controller;
 
 import View.*;
 import Model.*;
+import sun.java2d.loops.ProcessPath;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import java.awt.*;
@@ -19,6 +22,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * <p>The class <b>Controller.Controller</b> handles all events and
@@ -51,6 +55,8 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("helpDialog")) {
             helpMenuItemAction();
+        } else if (e.getActionCommand().equals("aboutDialog")) {
+            aboutMenuItemAction();
         }
     }
 
@@ -268,5 +274,50 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
         helpTextFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helpTextFrame.pack();
         helpTextFrame.setVisible(true);
+    }
+
+    /**
+     * Private helper function for the about sub-item in the help JMenuBar item.
+     * <p>
+     * Displays a JOptionPane that has info about the program.
+     *
+     * Got the code for generating url in an EditorPane from StackOverflow:
+     * http://stackoverflow.com/questions/8348063/clickable-links-in-joptionpane
+     */
+    private static void aboutMenuItemAction() {
+        // for copying style
+        JLabel label = new JLabel();
+        Font font = label.getFont();
+
+        // create some css from the label's font
+        StringBuffer style = new StringBuffer("font-family:" + font.getFamily() + ";");
+        style.append("font-weight:" + (font.isBold() ? "bold" : "normal") + ";");
+        style.append("font-size:" + font.getSize() + "pt;");
+
+        String urlString = "https://github.com/igorgrebenkov/base-converter";
+        // html content
+        JEditorPane ep = new JEditorPane("text/html", "<html><body style=\"" + style + "\">" //
+                + "<b>Version:</b> 0.9" + "<br>"
+                + "<b>Author:</b> Igor Grebenkov" + "<br>"
+                + "<b>GitHub: </b>"
+                + "<a href=\" " + urlString + "\">" + urlString + "</a>" //
+                + "</body></html>");
+
+        // handle link events
+        ep.addHyperlinkListener(new HyperlinkListener() {
+            @Override
+            public void hyperlinkUpdate(HyperlinkEvent e) {
+                if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED))
+                    try {
+                        Desktop.getDesktop().browse(new URL(urlString).toURI());
+                    } catch (Exception de) {
+                        de.printStackTrace();
+                    }
+            }
+        });
+        ep.setEditable(false);
+        ep.setBackground(label.getBackground());
+
+        JOptionPane.showMessageDialog(null, ep);
     }
 }
