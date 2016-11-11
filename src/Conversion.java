@@ -27,78 +27,34 @@ public class Conversion {
         inputString = inputString.replaceAll("\\s",""); // ignore spaces
         switch (prefix) {
             case '%':
-                convertBinary(inputString, model);
+                convertNumber(inputString, model, BASE_TWO);
                 break;
             case '@':
-                convertOctal(inputString, model);
+                convertNumber(inputString, model, BASE_EIGHT);
                 break;
             case '#':
-                convertDecimal(inputString, model);
+                convertNumber(inputString, model, BASE_TEN);
                 break;
             case '$':
-                convertHex(inputString, model);
+                convertNumber(inputString, model, BASE_SIXTEEN);
                 break;
         }
     }
 
     /**
-     * Updates model with result of binary string conversions.
-     * @param inputString   the input string
-     * @param model         the model
-     * @throws NumberFormatException    thrown when input is invalid
+     * Private helper function that converts a number and uses it to update the model.
+     * @param inputString the input string (number to convert)
+     * @param model the model
+     * @param base the base we are converting to
      */
-    private static void convertBinary(String inputString, Model model) throws NumberFormatException {
-        Long inputNum = Long.parseLong(inputString, BASE_TWO);
-
-        model.setOutBinary(formatBinaryString(inputString));
-        model.setOutOctal(formatOctalString(toOctalString(inputNum)));
-        model.setOutDecimal(formatDecimalString(inputNum.toString()));
-        model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
-    }
-
-    /**
-     * Updates model with result of octal string conversions.
-     * @param inputString   the input string
-     * @param model         the model
-     * @throws NumberFormatException    thrown when input is invalid
-     */
-    private static void convertOctal(String inputString, Model model) throws NumberFormatException {
-        Long inputNum = Long.parseLong(inputString, BASE_EIGHT);
-
-        model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
-        model.setOutOctal(formatOctalString(inputString));
-        model.setOutDecimal(formatDecimalString(inputNum.toString()));
-        model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
-    }
-
-    /**
-     * Updates model with result of decimal string conversions.
-     * @param inputString   the input string
-     * @param model         the model
-     * @throws NumberFormatException    thrown when input is invalid
-     */
-    private static void convertDecimal(String inputString, Model model) throws NumberFormatException {
-        Long inputNum = Long.parseLong(inputString, BASE_TEN);
+    private static void convertNumber(String inputString, Model model, int base) {
+        Long inputNum = Long.parseLong(inputString, base);
 
         model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
         model.setOutOctal(formatOctalString(toOctalString(inputNum)));
         model.setOutDecimal(formatDecimalString(inputNum.toString()));
         model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
-    }
 
-    /**
-     * Updates model with result of hex string conversions.
-     * @param inputString   the input string
-     * @param model         the model
-     * @throws NumberFormatException    thrown when input is invalid
-     */
-    private static void convertHex(String inputString, Model model) throws NumberFormatException {
-        Long inputNum = Long.parseLong(inputString, BASE_SIXTEEN);
-
-        model.setOutBinary(formatBinaryString(toBinaryString(inputNum)));
-        model.setOutOctal(formatOctalString(toOctalString(inputNum)));
-        model.setOutDecimal(formatDecimalString(inputNum.toString()));
-        model.setOutHex(formatHexString(toHexString(inputNum).toUpperCase()));
     }
 
     /**
