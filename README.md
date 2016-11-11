@@ -5,7 +5,7 @@ mouse-free base conversion between binary/octal/decimal/hex
 Most of the base converters I've seen have two annoying traits:
 
     1. The user must interact with some gui element to select the desired base for conversion.
-    2. The user must interact with some gui element to specify specify the base of the input digit. 
+    2. The user must interact with some gui element to specify the base of the input digit. 
 
 This application aims to solve these problems by,
 
@@ -22,10 +22,10 @@ The first character in the input field must be one of the following:
 
     %  -  binary input
     @  -  octal input
-    \#  -  decimal input
+    #  -  decimal input
     $  - hex input
 
-The following characters must be a valid digit for that prefix.
+Valid input digits following the prefix character will be converted as they are entered in real-time. 
 
 For example, to enter the binary digit 1010 for conversion, the user must input:
 
@@ -38,6 +38,11 @@ To enter a hex number,
 and so on. 
 
 Using a digit incompatible with a prefix will present the user with the error message, "invalid number".
+
+For example, 
+    %10012
+
+is invalid because there is no 2 digit in binary. 
 
 **Note:** Whitespace is ignored in user input, so the following are also valid inputs:
 
