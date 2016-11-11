@@ -2,7 +2,7 @@
 mouse-free base conversion between binary/octal/decimal/hex
 
 # Why another base converter?
-Most of the base converters I've seen have two annoying traits:
+Many of the base converters I've used possess a few annoying traits::
 
     1. The user must interact with some gui element to select the desired base for conversion.
     2. The user must interact with some gui element to specify the base of the input digit. 
