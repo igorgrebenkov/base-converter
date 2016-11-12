@@ -13,7 +13,7 @@ import java.awt.*;
 public class TextField extends JTextField {
     private final static int MAX_FIELD_WIDTH = 400;         // max width of the View.TextField
     private final static int MAX_FIELD_HEIGHT = 30;
-    private static final float TEXT_SCALING_FACTOR = 1.8f;  // scaling factor for label text
+    private static final float TEXT_SCALING_FACTOR = 1.77f;  // scaling factor for label text
 
     /**
      * Constructor.
