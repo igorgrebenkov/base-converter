@@ -226,7 +226,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
         final int BORDER_WIDTH = 10;
 
         /********** Main JFrame for Help Window **********/
-        JFrame helpTextFrame = new JFrame();
+        JFrame helpTextFrame = new JFrame("Help");
         helpTextFrame.setBackground(Color.white);
 
         /********** JEditorPane for Help Text ***********/
@@ -317,6 +317,6 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
         ep.setEditable(false);
         ep.setBackground(label.getBackground());
 
-        JOptionPane.showMessageDialog(null, ep);
+        JOptionPane.showMessageDialog(null, ep, "About", 1);
     }
 }
