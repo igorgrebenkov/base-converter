@@ -296,6 +296,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
         String urlString = "https://github.com/igorgrebenkov/base-converter";
         // html content
         JEditorPane ep = new JEditorPane("text/html", "<html><body style=\"" + style + "\">" //
+                + "<b>base-converter</b>" + "<br>"
                 + "<b>Version:</b> 0.9" + "<br>"
                 + "<b>Author:</b> Igor Grebenkov" + "<br>"
                 + "<b>GitHub: </b>"
