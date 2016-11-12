@@ -12,6 +12,8 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 /**
  * <p>The class <b>View.View</b> contains the main View.View of the program.</p>
@@ -35,7 +37,7 @@ public class View extends JFrame {
      * @param controller the controller
      */
     public View(Model model, Controller controller) {
-        super("Base Converter");
+        super("base-converter");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setResizable(false);
@@ -64,16 +66,7 @@ public class View extends JFrame {
         });
 
         // Help menu
-        helpMenu = new JMenu();
-        // Sets icon for help menu by reading external image
-        try {
-            BufferedImage brImg = ImageIO.read(new File("img/menu_icon.png"));
-            ImageIcon menuIcon = new ImageIcon(brImg);
-            helpMenu.setIcon(menuIcon);
-        } catch (IOException e) {
-            System.err.println("IOException: " + e.getMessage());
-        }
-
+        helpMenu = new JMenu("Help");
         helpMenu.setMnemonic(KeyEvent.VK_H);
         helpMenu.getAccessibleContext().setAccessibleDescription(
                 "Contains items that open the help and about dialogs."

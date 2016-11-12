@@ -18,10 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.datatransfer.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 
 /**
@@ -246,8 +243,9 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
 
         // Get help html from external file
         try {
-            FileReader reader = new FileReader("docs/QuickGuide.html");
-            BufferedReader br = new BufferedReader(reader);
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream is = classloader.getResourceAsStream("QuickGuide.html");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
             helpEditorPane.read(br, null);
             br.close();
         } catch (FileNotFoundException fnfe) {
