@@ -104,7 +104,7 @@ public class View extends JFrame {
 
         JPanel inputLabelPanel = new JPanel();
         inputLabelPanel.setBackground(Color.darkGray);
-        JLabel inputLabel = new JLabel("          Input");  // super hacky spacing
+        JLabel inputLabel = new JLabel("             Input");  // super hacky spacing
         inputLabel.setFont(
                 inputLabel.getFont().deriveFont(
                         inputLabel.getFont().getSize() * TEXT_SCALING_FACTOR));
@@ -121,7 +121,7 @@ public class View extends JFrame {
 
         JPanel outputLabelPanel = new JPanel();
         outputLabelPanel.setBackground(Color.darkGray);
-        JLabel outputLabel = new JLabel("          Output");  // super hacky spacing
+        JLabel outputLabel = new JLabel("             Output");  // super hacky spacing
         outputLabel.setFont(
                 outputLabel.getFont().deriveFont(
                         outputLabel.getFont().getSize() * TEXT_SCALING_FACTOR));
