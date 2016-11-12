@@ -271,6 +271,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
         helpTextFrame.add(helpTextPanel);
         helpTextFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         helpTextFrame.pack();
+        helpTextFrame.setLocationRelativeTo(null);
         helpTextFrame.setVisible(true);
     }
 

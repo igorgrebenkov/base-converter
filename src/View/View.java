@@ -144,6 +144,7 @@ public class View extends JFrame {
         add(mainPanel);
         inputView.getInputField().requestFocus();
         pack();
+        setLocationRelativeTo(null);
     }
 
     /**
