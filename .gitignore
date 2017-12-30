@@ -54,3 +54,5 @@ crashlytics-build.properties
 fabric.properties
 .idea/artifacts/
 src/META-INF/
+
+git_release/
