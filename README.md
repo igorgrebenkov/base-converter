@@ -1,6 +1,8 @@
 # base-converter
 mouse-free base conversion between binary/octal/decimal/hex
 
+![base-converter screenshot][screenshot]
+
 ## Why another base converter?
 Many of the base converters I've used possess a few annoying traits::
 
@@ -88,7 +90,7 @@ Groups of 2 digits (8 bits), with zero padding.
     3A6F becomes 3A 6F
     5B7A1 becomes 05 B7 A1
 
-
+[screenshot]: https://github.com/igorgrebenkov/base-converter/blob/master/screenshot.gif
 
 
 
