@@ -23,7 +23,7 @@ The first character in the input field must be one of the following:
     b  -  binary input
     o  -  octal input
     d  -  decimal input
-    h  - hex input
+    h  -  hex input
 
 Valid input digits following the prefix character will be converted as they are entered in real-time. 
 
