@@ -83,16 +83,16 @@ public class Conversion {
                     break;
             }
         }
-        String result = "";
+        StringBuilder result = new StringBuilder();
         // Add spaces to group into fours
         for (int i = 0; i < binary.length(); ++i) {
             char c = binary.charAt(i);
             if (i % 4 == 0 && i != 0) {
-                result += " ";
+                result.append(" ");
             }
-            result += c;
+            result.append(c);
         }
-        return result;
+        return result.toString();
     }
 
     /**
@@ -114,16 +114,16 @@ public class Conversion {
                     break;
             }
         }
-        String result = "";
+        StringBuilder result = new StringBuilder();
         // Add spaces to group into threes
         for (int i = 0; i < octal.length(); ++i) {
             char c = octal.charAt(i);
             if (i % 3 == 0 && i != 0) {
-                result += " ";
+                result.append(" ");
             }
-            result += c;
+            result.append(c);
         }
-        return result;
+        return result.toString();
     }
 
     /**
@@ -152,15 +152,15 @@ public class Conversion {
                     break;
 
             }
-            String remainderSpaced = "";
+            StringBuilder remainderSpaced = new StringBuilder();
 
             // Add spaces to rest of string to group into threes
             for (int i = 0; i < remainder.length(); ++i) {
                 char c = remainder.charAt(i);
                 if (i != 0 && i % 3 == 0) {
-                    remainderSpaced += " ";
+                    remainderSpaced.append(" ");
                 }
-                remainderSpaced += c;
+                remainderSpaced.append(c);
             }
             return firstDigit + remainderSpaced;
         }
@@ -179,15 +179,15 @@ public class Conversion {
         if (hex.length() > 2 && hex.length() % 2 == 1) {
             hex = "0" + hex;
         }
-        String result = "";
+        StringBuilder result = new StringBuilder();
         // Add spaces to group into twos
         for (int i = 0; i < hex.length(); ++i) {
             char c = hex.charAt(i);
             if (i % 2 == 0 && i != 0) {
-                result += " ";
+                result.append(" ");
             }
-            result += c;
+            result.append(c);
         }
-        return result;
+        return result.toString();
     }
 }
