@@ -30,16 +30,16 @@ public class Conversion {
     public static void convertNumber(char prefix, String inputString, Model model) throws NumberFormatException {
         inputString = inputString.replaceAll("\\s", ""); // ignore spaces
         switch (prefix) {
-            case '%':
+            case 'b':
                 convertNumber(inputString, model, BASE_TWO);
                 break;
-            case '@':
+            case 'o':
                 convertNumber(inputString, model, BASE_EIGHT);
                 break;
-            case '#':
+            case 'd':
                 convertNumber(inputString, model, BASE_TEN);
                 break;
-            case '$':
+            case 'h':
                 convertNumber(inputString, model, BASE_SIXTEEN);
                 break;
         }

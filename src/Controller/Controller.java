@@ -72,10 +72,10 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
      * The KeyPressed KeyEvent handler. Used to implement keyboard
      * shortcuts.
      * <p>
-     * CTRL+5 -> copy binary output
-     * CTRL+2 -> copy octal output
-     * CTRL+3 -> copy decimal output
-     * CTRL+3 -> copy hex output
+     * CTRL+b -> copy binary output
+     * CTRL+o -> copy octal output
+     * CTRL+d -> copy decimal output
+     * CTRL+h -> copy hex output
      * CTRL+i -> copy input
      * CTRL+c -> clear input (and output)
      *
@@ -84,16 +84,16 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
     public void keyPressed(KeyEvent e) {
         if (e.isControlDown()) {
             switch (e.getKeyCode()) {
-                case KeyEvent.VK_5:
+                case KeyEvent.VK_B:
                     clipBoardAction(model.getOutBinary());
                     break;
-                case KeyEvent.VK_2:
+                case KeyEvent.VK_O:
                     clipBoardAction(model.getOutOctal());
                     break;
-                case KeyEvent.VK_3:
+                case KeyEvent.VK_D:
                     clipBoardAction(model.getOutDecimal());
                     break;
-                case KeyEvent.VK_4:
+                case KeyEvent.VK_H:
                     clipBoardAction(model.getOutHex());
                     break;
                 case KeyEvent.VK_I:
@@ -173,10 +173,10 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
      */
     private void processInput(String input) {
         if (input.length() > 1) {
-            if (input.charAt(0) == '%' ||
-                    input.charAt(0) == '@' ||
-                    input.charAt(0) == '#' ||
-                    input.charAt(0) == '$') {
+            if (input.charAt(0) == 'b' ||
+                    input.charAt(0) == 'o' ||
+                    input.charAt(0) == 'd' ||
+                    input.charAt(0) == 'h') {
                 try {
                     char basePrefix = input.charAt(0);
                     Conversion.convertNumber(basePrefix, input.substring(1), model);
@@ -186,11 +186,11 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
                 }
             }
         } else if (input.length() == 1 && !(
-                input.charAt(0) == '%' ||
-                        input.charAt(0) == '@' ||
-                        input.charAt(0) == '#' ||
-                        input.charAt(0) == '$')) {
-            view.getOutputView().setAllFields("Need valid prefix (%, @, #, $).");
+                input.charAt(0) == 'b' ||
+                        input.charAt(0) == 'o' ||
+                        input.charAt(0) == 'd' ||
+                        input.charAt(0) == 'h')) {
+            view.getOutputView().setAllFields("Need valid prefix (b, o, d, h).");
 
         } else {
             model.setOutBinary("");
