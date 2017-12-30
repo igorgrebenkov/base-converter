@@ -11,7 +11,6 @@ import java.awt.*;
  * @author Igor Grebenkov
  */
 public class OutputFieldLabel extends JLabel {
-    private static final float TEXT_SCALING_FACTOR = 1.8f;  // scaling factor for label text
 
     /**
      * Constructor.
@@ -20,7 +19,6 @@ public class OutputFieldLabel extends JLabel {
      */
     public OutputFieldLabel(String label) {
         super(label);
-        setFont(getFont().deriveFont(getFont().getSize() * TEXT_SCALING_FACTOR));
         setForeground(Color.WHITE);
     }
 }

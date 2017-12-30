@@ -28,7 +28,6 @@ public class View extends JFrame {
     private OutputView outputView;                          // The View.View for the bottom (output) portion
     private static final int FRAME_WIDTH = 525;             // the preferred width of the JFrame
     private static final int FRAME_HEIGHT = 300;            // the preferred height of the JFrame
-    private static final float TEXT_SCALING_FACTOR = 1.8f;  // scaling factor for label text
 
     /**
      * Constructor
@@ -105,9 +104,6 @@ public class View extends JFrame {
         JPanel inputLabelPanel = new JPanel();
         inputLabelPanel.setBackground(Color.darkGray);
         JLabel inputLabel = new JLabel("             Input");  // super hacky spacing
-        inputLabel.setFont(
-                inputLabel.getFont().deriveFont(
-                        inputLabel.getFont().getSize() * TEXT_SCALING_FACTOR));
         inputLabel.setForeground(Color.WHITE);
         inputLabelPanel.add(inputLabel);
         inputView = new InputView(model, controller);
@@ -122,9 +118,6 @@ public class View extends JFrame {
         JPanel outputLabelPanel = new JPanel();
         outputLabelPanel.setBackground(Color.darkGray);
         JLabel outputLabel = new JLabel("             Output");  // super hacky spacing
-        outputLabel.setFont(
-                outputLabel.getFont().deriveFont(
-                        outputLabel.getFont().getSize() * TEXT_SCALING_FACTOR));
         outputLabel.setForeground(Color.WHITE);
         outputLabelPanel.add(outputLabel);
         outputView = new OutputView(model, controller);

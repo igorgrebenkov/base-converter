@@ -13,14 +13,12 @@ import java.awt.*;
 public class TextField extends JTextField {
     private final static int MAX_FIELD_WIDTH = 400;         // max width of the View.TextField
     private final static int MAX_FIELD_HEIGHT = 30;
-    private static final float TEXT_SCALING_FACTOR = 1.77f;  // scaling factor for label text
 
     /**
      * Constructor.
      */
     public TextField() {
         setMaximumSize(new Dimension(MAX_FIELD_WIDTH, MAX_FIELD_HEIGHT));
-        setFont(getFont().deriveFont(getFont().getSize() * TEXT_SCALING_FACTOR));
         setEditable(false);
         setHorizontalAlignment(JTextField.CENTER);
         setFocusable(false);
