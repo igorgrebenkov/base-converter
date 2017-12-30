@@ -297,7 +297,7 @@ public class Controller implements ActionListener, DocumentListener, KeyListener
         // html content
         JEditorPane ep = new JEditorPane("text/html", "<html><body style=\"" + style + "\">" //
                 + "<b>base-converter</b>" + "<br>"
-                + "<b>Version:</b> 0.9" + "<br>"
+                + "<b>Version:</b> 1.0" + "<br>"
                 + "<b>Author:</b> Igor Grebenkov" + "<br>"
                 + "<b>GitHub: </b>"
                 + "<a href=\" " + urlString + "\">" + urlString + "</a>" //

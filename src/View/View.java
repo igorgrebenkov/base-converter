@@ -3,17 +3,11 @@ package View;
 import Controller.*;
 import Model.*;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicMenuBarUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 
 /**
  * <p>The class <b>View.View</b> contains the main View.View of the program.</p>
@@ -27,7 +21,7 @@ public class View extends JFrame {
     private InputView inputView;                            // The View.View for the top (input) portion
     private OutputView outputView;                          // The View.View for the bottom (output) portion
     private static final int FRAME_WIDTH = 525;             // the preferred width of the JFrame
-    private static final int FRAME_HEIGHT = 300;            // the preferred height of the JFrame
+    private static final int FRAME_HEIGHT = 250;            // the preferred height of the JFrame
 
     /**
      * Constructor
@@ -39,10 +33,12 @@ public class View extends JFrame {
         super("base-converter");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
         setFocusable(false);
         setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
+        setMinimumSize(new Dimension(FRAME_WIDTH, 250));
+        setMaximumSize(new Dimension(Integer.MAX_VALUE, 250));
 
         /******************* Main Panel *******************/
         JPanel mainPanel = new JPanel();
@@ -97,41 +93,14 @@ public class View extends JFrame {
 
         setJMenuBar(menuBar);
 
-        /*************** Input Label & View.View ****************/
-        final int INPUT_PANEL_WIDTH = 475;      // Maximum width of the inputLabelPanel
-        final int INPUT_PANEL_HEIGHT = 100;     // Maximum height of the inputLabelPanel
-
-        JPanel inputLabelPanel = new JPanel();
-        inputLabelPanel.setBackground(Color.darkGray);
-        JLabel inputLabel = new JLabel("             Input");  // super hacky spacing
-        inputLabel.setForeground(Color.WHITE);
-        inputLabelPanel.add(inputLabel);
         inputView = new InputView(model, controller);
-        inputView.setMaximumSize(new Dimension(
-                INPUT_PANEL_WIDTH,
-                INPUT_PANEL_HEIGHT));
-
-        /*************** Output Label & View.View ***************/
-        final int OUTPUT_PANEL_WIDTH = 475;     // Maximum width of the outputLabelPanel
-        final int OUTPUT_PANEL_HEIGHT = 700;    // Maximum height of the outputLabelPanel
-
-        JPanel outputLabelPanel = new JPanel();
-        outputLabelPanel.setBackground(Color.darkGray);
-        JLabel outputLabel = new JLabel("             Output");  // super hacky spacing
-        outputLabel.setForeground(Color.WHITE);
-        outputLabelPanel.add(outputLabel);
         outputView = new OutputView(model, controller);
-        outputView.setMaximumSize(new Dimension(
-                OUTPUT_PANEL_WIDTH,
-                OUTPUT_PANEL_HEIGHT));
 
         /*********** Add everything to mainPanel **********/
         final int SPACER_HEIGHT = 10;           // Height of RigidArea used as a spacer
 
-        mainPanel.add(inputLabelPanel, BorderLayout.PAGE_START);
         mainPanel.add(inputView, BorderLayout.NORTH);
         mainPanel.add(Box.createRigidArea(new Dimension(0, SPACER_HEIGHT)));
-        mainPanel.add(outputLabelPanel, BorderLayout.SOUTH);
         mainPanel.add(outputView, BorderLayout.PAGE_END);
         mainPanel.add(Box.createRigidArea(new Dimension(0, SPACER_HEIGHT)));
         add(mainPanel);

@@ -4,6 +4,7 @@ import Controller.*;
 import Model.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
@@ -31,28 +32,27 @@ public class OutputView extends JPanel {
         setBackground(Color.darkGray);
         setFocusable(true);
         setLayout(new GridBagLayout());
+        setBorder(new EmptyBorder(10, 10, 10, 10));
         GridBagConstraints c = new GridBagConstraints();
 
-        JLabel outputLabel = new JLabel("Output");
-        outputLabel.setForeground(Color.WHITE);
-
         outBinaryField = new TextField();
-        JLabel outBinaryLabel = new OutputFieldLabel("Binary  ");
+        JLabel outBinaryLabel = new OutputFieldLabel("Binary ");
 
         outOctalField = new TextField();
-        JLabel outOctalLabel = new OutputFieldLabel("Octal  ");
+        JLabel outOctalLabel = new OutputFieldLabel("Octal ");
 
         outDecimalField = new TextField();
-        JLabel outDecimalLabel = new OutputFieldLabel("Decimal  ");
+        JLabel outDecimalLabel = new OutputFieldLabel("Decimal ");
 
         outHexField = new TextField();
-        JLabel outHexLabel = new OutputFieldLabel("Hex  ");
+        JLabel outHexLabel = new OutputFieldLabel("Hex ");
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
 
-        add(outBinaryLabel);
         c.gridwidth = GridBagConstraints.REMAINDER;
+
+        add(outBinaryLabel);
         add(outBinaryField, c);
 
         add(outOctalLabel);

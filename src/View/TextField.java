@@ -11,7 +11,7 @@ import java.awt.*;
  * @author Igor Grebenkov
  */
 public class TextField extends JTextField {
-    private final static int MAX_FIELD_WIDTH = 400;         // max width of the View.TextField
+    private final static int MAX_FIELD_WIDTH = 400;
     private final static int MAX_FIELD_HEIGHT = 30;
 
     /**

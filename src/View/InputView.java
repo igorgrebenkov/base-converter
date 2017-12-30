@@ -4,6 +4,7 @@ import Controller.*;
 import Model.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 /**
@@ -28,6 +29,7 @@ public class InputView extends JPanel {
         setBackground(Color.darkGray);
         setFocusable(true);
         setLayout(new GridBagLayout());
+        setBorder(new EmptyBorder(10, 10, 10, 10));
         GridBagConstraints c = new GridBagConstraints();
 
         inputField = new TextField();
@@ -36,12 +38,11 @@ public class InputView extends JPanel {
         inputField.getDocument().addDocumentListener(controller);
         inputField.addKeyListener(controller);
 
-        JLabel spacer = new JLabel("                 "); // Maintains spacing with output TextFields
-        spacer.setLabelFor(inputField);
+        JLabel inputLabel = new OutputFieldLabel("  Input  ");
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 1;
-        add(spacer);
+        add(inputLabel);
         c.gridwidth = GridBagConstraints.REMAINDER;
         add(inputField, c);
     }
