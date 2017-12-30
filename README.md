@@ -51,7 +51,7 @@ is invalid because there is no 2 digit in binary.
     h3A 4E 6F
     b1 0 111 0 1111
 
-# Keyboard Shortcuts
+## Keyboard Shortcuts
 A number of keyboard shortcuts are available to copy the input/output fields to the clipboard.
 
     CTRL + b  -  copy binary output field
@@ -61,7 +61,7 @@ A number of keyboard shortcuts are available to copy the input/output fields to 
     CTRL + i  -  copy input field 
     CTRL + c  -  clear input field
 
-# Output Formatting
+## Output Formatting
 The conversion output is automatically spaced accordingly:
 
 ### Binary
